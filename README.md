@@ -1,27 +1,14 @@
 # MedisyncWeb
+En proyecto busca la automatización de toma de exámenes kinesiológicos (rango de movimiento y propiocepción), esto es posible mediante la integración de sensores Arduino que permiten la captura de métricas asociadas al tratamiento de pacientes. Esta información es recopilada y almacenada mediante una aplicación móvil, permitiendo la consulta de los resultados de exámenes y posterior revisión mediante una plataforma web.
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.9.
+## Sobre el Proyecto:
 
-## Development server
+Este proyecto es realizado para el seminario de grado de Ingenieria en Informatica de la Universidad Tecnologica de Chile INACAP.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## Desarrollado en:
 
-## Code scaffolding
+Este proyecto fue generaro con [Angular CLI 7](https://github.com/angular/angular-cli) para el desarrollo de aplicaciones web, junto a [Firestore](https://firebase.google.com/) como base de datos noSQL, [Bootstrap 4](https://getbootstrap.com/) como framework de diseño CSS  y [Fontawesome 5](https://fontawesome.com/start) como fuente de iconos.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Autores:
 
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+Rodrigo Manriquez Gonzalez y Luis Méndez Méndez.
