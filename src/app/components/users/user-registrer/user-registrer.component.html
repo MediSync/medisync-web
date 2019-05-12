@@ -1,0 +1,40 @@
+<div class="card">
+  <div class="card-body">
+    <h5>Registrar Usuarios</h5>
+    <form #userForm="ngForm" autocomplete="off">
+      <div class="form-group">
+        <input type="text" name="rut" #rut="ngModel" [(ngModel)]="service.FormData.rut" class="form-control"
+          placeholder="RUT" required>
+      </div>
+      <div class="form-group">
+        <input type="text" name="names" #names="ngModel" [(ngModel)]="service.FormData.names" class="form-control"
+          placeholder="Nombres" required>
+      </div>
+      <div class="form-group">
+        <input type="text" name="last_name1" #last_name1="ngModel" [(ngModel)]="service.FormData.last_name1"
+          class="form-control" placeholder="Apellido Paterno" required>
+      </div>
+      <div class="form-group">
+        <input type="text" name="last_name2" #last_name2="ngModel" [(ngModel)]="service.FormData.last_name2"
+          class="form-control" placeholder="Apellido Materno" required>
+      </div>
+      <div class="form-group">
+        <input type="text" name="phone" #phone="ngModel" [(ngModel)]="service.FormData.phone" class="form-control"
+          placeholder="Celular">
+      </div>
+      <div class="form-group">
+        <input type="email" name="email" #email="ngModel" [(ngModel)]="service.FormData.email" class="form-control"
+          placeholder="Correo" required>
+      </div>
+      <div class="form-group">
+        <input type="password" name="password" #password="ngModel" [(ngModel)]="service.FormData.password"
+          class="form-control" placeholder="Contraseña" required>
+      </div>
+      <div class="from-group">
+          <button class="btn btn-primary btn-block" type="submit">
+            <!--<i class="fas fa-plus-circle"></i>-->AGREGAR USUARIO
+          </button>
+      </div>
+    </form>
+  </div>
+</div>
