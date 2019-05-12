@@ -1,5 +1,21 @@
 <div class="card">
   <div class="card-body">
       <h5>Listado de Usuarios</h5>
+      <table class="table table-hover table-striped table-sm">
+        <th>Rut</th>
+        <th>Nombres</th>
+        <th>Telefono</th>
+        <th>Correo</th>
+        <th></th>
+        <tbody>
+          <tr *ngFor="let usr of list">
+            <td (click)="onEdit(usr)">{{usr.rut}}</td>
+            <td (click)="onEdit(usr)">{{usr.names}} {{usr.last_name1}} {{usr.last_name2}}</td>
+            <td (click)="onEdit(usr)">{{usr.phone}}</td>
+            <td (click)="onEdit(usr)">{{usr.email}}</td>
+            <td><a class="btn text-danger btn-sm" (click)="onDelete(usr.id)"><i class="fa fa-trash"></i></a></td>
+          </tr>
+        </tbody>
+      </table>
   </div>
 </div>

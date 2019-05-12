@@ -1,39 +1,47 @@
 <div class="card">
   <div class="card-body">
     <h5>Registrar Usuarios</h5>
-    <form #userForm="ngForm" autocomplete="off">
+    <form #userForm="ngForm" autocomplete="off" (submit)="onSubmit(userForm)">
+      <input type="hidden" name="id" #id="ngModel" [(ngModel)]="service.FormData.id">
       <div class="form-group">
         <input type="text" name="rut" #rut="ngModel" [(ngModel)]="service.FormData.rut" class="form-control"
           placeholder="RUT" required>
+        <div *ngIf="rut.invalid && rut.touched" class="validation-error">Debe ingresar un RUT</div>
       </div>
       <div class="form-group">
         <input type="text" name="names" #names="ngModel" [(ngModel)]="service.FormData.names" class="form-control"
           placeholder="Nombres" required>
+        <div *ngIf="names.invalid && names.touched" class="validation-error">Debe ingresar nombres</div>
       </div>
       <div class="form-group">
         <input type="text" name="last_name1" #last_name1="ngModel" [(ngModel)]="service.FormData.last_name1"
           class="form-control" placeholder="Apellido Paterno" required>
+        <div *ngIf="last_name1.invalid && last_name1.touched" class="validation-error">Debe ingresar apellido paterno</div>
       </div>
       <div class="form-group">
         <input type="text" name="last_name2" #last_name2="ngModel" [(ngModel)]="service.FormData.last_name2"
           class="form-control" placeholder="Apellido Materno" required>
+        <div *ngIf="last_name2.invalid && last_name2.touched" class="validation-error">Debe ingresar apellido materno</div>
       </div>
       <div class="form-group">
         <input type="text" name="phone" #phone="ngModel" [(ngModel)]="service.FormData.phone" class="form-control"
-          placeholder="Celular">
+          placeholder="Celular" required>
+        <div *ngIf="phone.invalid && phone.touched" class="validation-error">Debe ingresar un telefono</div>
       </div>
       <div class="form-group">
         <input type="email" name="email" #email="ngModel" [(ngModel)]="service.FormData.email" class="form-control"
           placeholder="Correo" required>
+        <div *ngIf="email.invalid && email.touched" class="validation-error">Debe ingrar un correo</div>
       </div>
       <div class="form-group">
         <input type="password" name="password" #password="ngModel" [(ngModel)]="service.FormData.password"
           class="form-control" placeholder="Contraseña" required>
+        <div *ngIf="password.invalid && password.touched" class="validation-error">Debe ingresar una contraseña</div>
       </div>
       <div class="from-group">
-          <button class="btn btn-primary btn-block" type="submit">
-            <!--<i class="fas fa-plus-circle"></i>-->AGREGAR USUARIO
-          </button>
+        <button type="submit" [disabled]="userForm.invalid" class="btn btn-primary btn-block" >
+          <!--<i class="fas fa-plus-circle"></i>-->GUARDAR REGISTRO
+        </button>
       </div>
     </form>
   </div>

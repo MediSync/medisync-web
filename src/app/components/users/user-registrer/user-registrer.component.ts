@@ -9,7 +9,7 @@ import { AngularFirestore } from '@angular/fire/firestore';
   styleUrls: ['./user-registrer.component.css']
 })
 export class UserRegistrerComponent implements OnInit {
-
+  
   constructor(public service: UsersService,
     private firestore: AngularFirestore) { }
 
@@ -30,5 +30,16 @@ export class UserRegistrerComponent implements OnInit {
       email: '',
       password: ''
     }
+  }
+
+  onSubmit(form: NgForm) {
+    let data = Object.assign({}, form.value);
+    delete data.id;
+    if (form.value.id == null)
+      this.firestore.collection('users').add(data);
+    else
+      this.firestore.doc('users/' + form.value.id).update(data);
+    this.resetForm(form);
+    alert("Registro exitoso");
   }
 }
