@@ -1,0 +1,48 @@
+<div class="container py-5">
+  <div class="row">
+    <div class="col-md-12">
+      <h2 class="text-center text-white mb-4">MediSync-Web Proyect v.0.1</h2>
+      <div class="row">
+        <div class="col-md-6 mx-auto">
+
+          <!-- form card login -->
+          <div class="card rounded-0">
+            <div class="card-header">
+              <h3 class="mb-0">Login Profesional</h3>
+            </div>
+            <div class="card-body">
+              <form #loginForm="ngForm" autocomplete="off" (submit)="onSubmit(loginForm)">
+                <div class="form-group">
+                  <label for="uname1">Usuraio</label>
+                  <input type="text" name="rut" #rut="ngModel" [(ngModel)]="login_rut" class="form-control form-control-lg"
+                    placeholder="RUT" required>
+                  <div *ngIf="rut.invalid && rut.touched" class="validation-error">Debe ingresar un RUT</div>
+                </div>
+                <div class="form-group">
+                  <label>Contraseña</label>
+                  <input type="password" name="password" #password="ngModel" [(ngModel)]="login_pass"
+                    class="form-control form-control-lg" placeholder="Contraseña" required>
+                  <div *ngIf="password.invalid && password.touched" class="validation-error">Debe ingresar una
+                    contraseña</div>
+                </div>
+                <div>
+                </div>
+                <button type="submit" [disabled]="loginForm.invalid" class="btn btn-success btn-lg float-right" id="btnLogin">Ingresar</button>
+              </form>
+            </div>
+            <!--/card-block-->
+          </div>
+          <!-- /form card login -->
+
+        </div>
+
+
+      </div>
+      <!--/row-->
+
+    </div>
+    <!--/col-->
+  </div>
+  <!--/row-->
+</div>
+<!--/container-->
