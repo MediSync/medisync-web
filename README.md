@@ -1,4 +1,4 @@
-# MediSync-Web v.2.0.1
+# MediSync-Web v.2.1.190601
 En proyecto busca la automatización de toma de exámenes kinesiológicos (rango de movimiento y propiocepción), esto es posible mediante la integración de sensores Arduino que permiten la captura de métricas asociadas al tratamiento de pacientes. Esta información es recopilada y almacenada mediante una aplicación móvil, permitiendo la consulta de los resultados de exámenes y posterior revisión mediante una plataforma web.
 
 ## Sobre el Proyecto:
