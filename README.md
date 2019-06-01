@@ -7,10 +7,10 @@ Este proyecto es realizado para el seminario de grado de Ingenieria en Informati
 
 ## Desarrollado en:
 
-[CodeIgniter 3.1.10](https://www.codeigniter.com/)
-[Firestore](https://firebase.google.com/)
-[Bootstrap 4](https://getbootstrap.com/)
-[Fontawesome 5](https://fontawesome.com/start)
+[CodeIgniter 3.1.10](https://www.codeigniter.com/)__
+[Firestore](https://firebase.google.com/)__
+[Bootstrap 4](https://getbootstrap.com/)__
+[Fontawesome 5](https://fontawesome.com/start)__
 [MediSync RESTful API](https://github.com/MediSync/medisync-api)
 
 ## Autores:
