@@ -1,0 +1,46 @@
+html,
+.fondo {
+	height: 100%;
+	width: 100%;
+
+}
+
+.fondo {
+	/* The image used */
+	background-image: url(../../assets/image/fondo_inicio.jpeg);
+	/* Full height */
+	height: 100%;
+	/* Center and scale the image nicely */
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	position: relative;
+	overflow: hidden;
+}
+
+.fondo::before {
+	content: '';
+	display: block;
+	background: inherit;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	left: 0;
+	top: 0;
+	filter: blur(1px);
+	transform: scale(1.2, 1.4);
+}
+
+footer {
+	background-color: black;
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	height: 40px;
+}
+
+#content,
+footer {
+	opacity: .8;
+}
+
