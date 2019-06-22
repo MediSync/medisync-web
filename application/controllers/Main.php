@@ -11,25 +11,59 @@ class Main extends CI_Controller
     # main index
     public function index()
     {
-        if ($this->session->userdata("patient")) {
-            $this->load->view('patient/principal/header');
-            $this->load->view('patient/principal/main');
-            $this->load->view('patient/principal/footer');
-        } else if ($this->session->userdata("profesional")) {
-            $this->load->view('profesional/principal/header');
-            $this->load->view('profesional/principal/main');
-            $this->load->view('profesional/principal/footer');
-        } else if ($this->session->userdata("organization")) {
-            $this->load->view('organization/principal/header');
-            $this->load->view('organization/principal/main');
-            $this->load->view('organization/principal/footer');
-        } else {
-            $this->load->view('main/login');
-        }
+        $this->load->view('main/header');
+        $this->load->view('main/home');
+        $this->load->view('main/footer');
     }
 
-    # validar usuario
+    # iniciar sesion
     public function login()
+    {
+        $this->load->view('main/header');
+        $this->load->view('main/login');
+        $this->load->view('main/footer');
+    }
+
+    # registrar usuario
+    public function registrer()
+    {
+        $this->load->view('main/header');
+        $this->load->view('main/registrer');
+        $this->load->view('main/footer');
+    }
+
+    # recuperar contraseña
+    public function recover()
+    {
+        $this->load->view('main/header');
+        $this->load->view('main/recover');
+        $this->load->view('main/footer');
+    }
+    /*
+    public function index()
+    {
+    if ($this->session->userdata("patient")) {
+    $this->load->view('patient/principal/header');
+    $this->load->view('patient/principal/main');
+    $this->load->view('patient/principal/footer');
+    } else if ($this->session->userdata("profesional")) {
+    $this->load->view('profesional/principal/header');
+    $this->load->view('profesional/principal/main');
+    $this->load->view('profesional/principal/footer');
+    } else if ($this->session->userdata("organization")) {
+    $this->load->view('organization/principal/header');
+    $this->load->view('organization/principal/main');
+    $this->load->view('organization/principal/footer');
+    } else {
+    $this->load->view('main/header');
+    $this->load->view('main/home');
+    $this->load->view('main/footer');
+    }
+    }
+     */
+
+    # validar usuario
+    public function check_login()
     {
         $profile = $this->input->post('profile');
         $rut = $this->input->post('rut');

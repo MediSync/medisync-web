@@ -232,3 +232,11 @@ button.toast-close-button {
     padding: 15px 50px 15px 15px;
   }
 }
+
+.toast {
+  opacity: 1 !important;
+}
+
+#toast-container > div {
+  opacity: 1 !important; 
+}

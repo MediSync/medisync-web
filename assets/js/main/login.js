@@ -1,7 +1,7 @@
 $(document).ready(function () {
     toastr.options = {
         "closeButton": true,
-        "positionClass": "toast-top-left"
+        "positionClass": "toast-top-right"
     }
 
     if (localStorage.getItem("enviroment") == "main") {
@@ -31,7 +31,7 @@ $("#btn_login").on("click", function (e) {
     } else {
         $("#loader").addClass("is-active");
         $.ajax({
-            url: 'login',
+            url: 'check_login',
             type: 'post',
             dataType: 'json',
             data: data,
