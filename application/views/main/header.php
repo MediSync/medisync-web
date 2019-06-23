@@ -6,6 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="shortcut icon" href="assets/img/icono.ico">
 
 	<title>MediSync Web</title>
 
@@ -26,5 +27,6 @@
     <link href="assets/lib/admin-2/css/dataTables.bootstrap4.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="assets/lib/toastr-2.1.4-7/toastr.css">
     <link rel="stylesheet" type="text/css" href="assets/lib/bootstrap-select-1.13.9/css/bootstrap-select.min.css">
-
+    <link rel="stylesheet" type="text/css"
+        href="assets/lib/bootstrap-datepicker-1.6.4/css/bootstrap-datepicker3.min.css">
 </head>

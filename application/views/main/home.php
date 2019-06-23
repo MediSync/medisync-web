@@ -1,157 +1,97 @@
-<body id="page-top" class="fondo">
-	<style>
-		/*
-Removes white gap between slides
-*/
-		.carousel {
-			background: darkgray;
-		}
+<!DOCTYPE html>
+<html lang="en">
 
-		/*
-Forces image to be 100% width and not max width of 100%
-*/
-		.carousel-item .img-fluid {
-			width: 100%;
-			height: auto;
-		}
+<head>
+	<meta charset="utf-8">
+	<title>MediSync</title>
+	<meta content="width=device-width, initial-scale=1.0" name="viewport">
+	<meta content="" name="keywords">
+	<meta content="" name="description">
 
-		.mb-4,
-		.my-4 {
-			margin-bottom: 0 !important;
-		}
-	</style>
+	<!-- Facebook Opengraph integration: https://developers.facebook.com/docs/sharing/opengraph -->
+	<meta property="og:title" content="">
+	<meta property="og:image" content="">
+	<meta property="og:url" content="">
+	<meta property="og:site_name" content="">
+	<meta property="og:description" content="">
 
-	<!-- Page Wrapper -->
-	<div id="wrapper" class="">
+	<!-- Twitter Cards integration: https://dev.twitter.com/cards/  -->
+	<meta name="twitter:card" content="summary">
+	<meta name="twitter:site" content="">
+	<meta name="twitter:title" content="">
+	<meta name="twitter:description" content="">
+	<meta name="twitter:image" content="">
 
+	<!-- Favicon -->
+	<link href="img/favicon.ico" rel="icon">
 
+	<!-- Google Fonts -->
+	<link href="https://fonts.googleapis.com/css?family=Raleway:400,500,700|Roboto:400,900" rel="stylesheet">
 
-		<!-- Content Wrapper -->
-		<div id="content-wrapper" class="d-flex flex-column">
+	<!-- Bootstrap CSS File -->
+	<link href="assets/lib/Bell/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
-			<!-- Main Content -->
-			<div id="content">
+	<!-- Libraries CSS Files -->
+	<link href="assets/lib/Bell/lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
 
-				<!-- Topbar -->
-				<nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+	<!-- Main Stylesheet File -->
+	<link href="assets/lib/Bell/css/style.css" rel="stylesheet">
 
-					<div class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100">
-						<div class="input-group">
-							<strong>MediSync</strong>
-						</div>
-					</div>
+	<!-- =======================================================
+    Theme Name: Bell
+    Theme URL: https://bootstrapmade.com/bell-free-bootstrap-4-template/
+    Author: BootstrapMade.com
+    Author URL: https://bootstrapmade.com
+  ======================================================= -->
+</head>
 
+<body>
+	<!-- Page Content
+    ================================================== -->
+	<!-- Hero -->
 
-					<!-- Topbar Navbar -->
-					<ul class="navbar-nav ml-auto">
-
-						<a id="boton" href="login"
-							class="btn btn-light btn-icon-split border-left-info">
-							<span class="text">Ingresar</span>
-						</a>
-						&nbsp;
-						&nbsp;
-						<a id="boton" href="registrer"
-							class="btn btn-light btn-icon-split border-left-success">
-							<span class="text">Registrarse</span>
-						</a>
-
-					</ul>
-
-				</nav>
-				<!-- End of Topbar -->
-
-				<!-- Begin Page Content -->
-				<!--
-    ####################################################
-    C A R O U S E L
-    ####################################################
-    -->
-				<div id="carousel-2" class="carousel slide carousel-fade" data-ride="carousel" data-interval="6000">
-					<ol class="carousel-indicators">
-						<li data-target="#carousel-2" data-slide-to="0" class="active"></li>
-						<li data-target="#carousel-2" data-slide-to="1"></li>
-						<li data-target="#carousel-2" data-slide-to="2"></li>
-					</ol>
-					<div class="carousel-inner" role="listbox">
-
-						<div class="carousel-item active">
-							<a href="https://bootstrapcreative.com/">
-
-								<img src="assets/img/img-01.jpeg" alt="responsive image"
-									class="d-block img-fluid">
-
-								<div class="carousel-caption">
-									<div>
-										<h2>Dispositovo con Sensores</h2>
-										<p>Construido con tegnologia Arduino</p>
-										<!--<span class="btn btn-sm btn-outline-secondary">Learn More</span>-->
-									</div>
-								</div>
-							</a>
-						</div>
-						<!-- /.carousel-item -->
-
-
-						<div class="carousel-item">
-							<a href="https://bootstrapcreative.com/">
-								<img src="assets/img/img-02.jpg" alt="responsive image"
-									class="d-block img-fluid">
-
-								<div class="carousel-caption justify-content-center align-items-center">
-									<div>
-										<h2 style="color: black">MediSync APP para Android</h2>
-										<p style="color: black">Revise historial clinico, registre examenes y controle el sensor</p>
-										<!--<span class="btn btn-sm btn-outline-secondary">Our Process</span>-->
-									</div>
-								</div>
-							</a>
-						</div>
-						<!-- /.carousel-item -->
-						<div class="carousel-item">
-							<a href="https://bootstrapcreative.com/">
-
-								<img src="assets/img/img-03.jpg" alt="responsive image"
-									class="d-block img-fluid">
-
-
-								<div class="carousel-caption justify-content-center align-items-center">
-									<div>
-										<h2 style="color: black">Plataforma WEB</h2>
-										<p style="color: black">Gestione examenes, historial clinico y mucho mas!</p>
-										<!--<span class="btn btn-sm btn-secondary">Learn How</span>-->
-									</div>
-								</div>
-							</a>
-						</div>
-						<!-- /.carousel-item -->
-					</div>
-					<!-- /.carousel-inner -->
-					<a class="carousel-control-prev" href="#carousel-2" role="button" data-slide="prev">
-						<span class="carousel-control-prev-icon" aria-hidden="true"></span>
-						<span class="sr-only">Previous</span>
-					</a>
-					<a class="carousel-control-next" href="#carousel-2" role="button" data-slide="next">
-						<span class="carousel-control-next-icon" aria-hidden="true"></span>
-						<span class="sr-only">Next</span>
-					</a>
+	<section class="hero">
+		<div class="container text-center">
+			<div class="row">
+				<div class="col-md-12">
+					<a class="hero-brand" href="index.html" title="Home"><img alt="Bell Logo"
+							src="assets/lib/Bell/img/logo.png"></a>
 				</div>
-				<!-- /.carousel -->
-
-
-				<div class="container-fluid">
-					<!-- rest of the page-->
-				</div>
-				<!-- /.container -->
-
 			</div>
-			<!-- /.container-fluid -->
 
+			<div class="col-md-12">
+				<h1>
+					Bienvenido a MediSync
+				</h1>
+
+				<p class="tagline">
+					Sensor Arduino + Aplicación Móvil + Plataforma Web
+				</p>
+				<a class="btn btn-full" href="login">INGRESE AHORA</a>
+			</div>
 		</div>
-		<!-- End of Main Content -->
 
-	</div>
-	<!-- End of Content Wrapper -->
 
-	</div>
-	<!-- End of Page Wrapper -->
+		<!-- Required JavaScript Libraries -->
+		<script src="assets/lib/Bell/lib/jquery/jquery.min.js"></script>
+		<script src="assets/lib/Bell/lib/jquery/jquery-migrate.min.js"></script>
+		<script src="assets/lib/Bell/lib/superfish/hoverIntent.js"></script>
+		<script src="assets/lib/Bell/lib/superfish/superfish.min.js"></script>
+		<script src="assets/lib/Bell/lib/tether/js/tether.min.js"></script>
+		<script src="assets/lib/Bell/lib/stellar/stellar.min.js"></script>
+		<script src="assets/lib/Bell/lib/bootstrap/js/bootstrap.bundle.min.js"></script>
+		<script src="assets/lib/Bell/lib/counterup/counterup.min.js"></script>
+		<script src="assets/lib/Bell/lib/waypoints/waypoints.min.js"></script>
+		<script src="assets/lib/Bell/lib/easing/easing.js"></script>
+		<script src="assets/lib/Bell/lib/stickyjs/sticky.js"></script>
+		<script src="assets/lib/Bell/lib/parallax/parallax.js"></script>
+		<script src="assets/lib/Bell/lib/lockfixed/lockfixed.min.js"></script>
+
+		<!-- Template Specisifc Custom Javascript File -->
+		<script src="assets/lib/Bell/js/custom.js"></script>
+
+		<script src="assets/lib/Bell/contactform/contactform.js"></script>
+
+</body>
+
+</html>

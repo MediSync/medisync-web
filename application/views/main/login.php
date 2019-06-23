@@ -14,24 +14,30 @@
 									<div class="text-center">
 										<h1 class="h4 text-gray-900 mb-4">Bienvenido!</h1>
 									</div>
-									<form class="user" id="login_form">
+									<form class="user" id="login_form" autocomplete="off">
 										<div class="form-group">
-											<input type="text" class="form-control form-control-user" id="rut"
-												name="rut" value="" placeholder="Ingresa su rut">
+											<input type="email" class="form-control form-control-user" id="email"
+												name="email" value="" placeholder="Ingrese su correo" autocomplete="off">
 										</div>
 										<div class="form-group">
 											<input type="password" class="form-control form-control-user" id="pass"
-												name="pass" value="" placeholder="Contraseña">
+												name="pass" value="" placeholder="Contraseña" autocomplete="off">
 										</div>
 										<div class="form-group">
-											<select id="profile" name="profile" class="selectpicker form-control"
-												title="Seleccione un perfil...">
+											<select id="profile" name="profile" class="custom-select" style="font-size: 0.8rem;
+															border-radius: 10rem; height: 3.1rem">
+												<option value="" disabled selected>Seleccione un Perfil...</option>
 												<option value="1">Paciente</option>
 												<option value="2">Profesional</option>
 												<option value="3">Organización</option>
 											</select>
 										</div>
-
+										<div class="form-group">
+											<div class="custom-control custom-switch" style="margin-left: 10px">
+												<input type="checkbox" class="custom-control-input" id="remember">
+												<label class="custom-control-label" for="remember">Recordar Credenciales</label>
+											  </div>
+										</div>
 										<button id=btn_login class="btn btn-primary btn-user btn-block">
 											Entrar
 										</button>

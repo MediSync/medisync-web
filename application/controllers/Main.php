@@ -11,25 +11,82 @@ class Main extends CI_Controller
     # main index
     public function index()
     {
-        $this->load->view('main/header');
         $this->load->view('main/home');
-        $this->load->view('main/footer');
+    }
+
+    # main index
+    public function principal()
+    {
+        if ($this->session->userdata("patient")) {
+            $this->load->view('patient/principal/header');
+            $this->load->view('patient/principal/main');
+            $this->load->view('patient/principal/footer');
+        } else if ($this->session->userdata("profesional")) {
+            $this->load->view('profesional/principal/header');
+            $this->load->view('profesional/principal/main');
+            $this->load->view('profesional/principal/footer');
+        } else if ($this->session->userdata("organization")) {
+            $this->load->view('organization/principal/header');
+            $this->load->view('organization/principal/main');
+            $this->load->view('organization/principal/footer');
+        } else {
+            $this->load->view('main/header');
+            $this->load->view('main/login');
+            $this->load->view('main/footer');
+        }
+    }
+
+    # main patient
+    public function set_patient()
+    {
+        $this->session->set_userdata("patient", "1");
+        redirect('principal');
+    }
+
+    # main profesional
+    public function set_profesional()
+    {
+        $this->session->set_userdata("profesional", "2");
+        redirect('principal');
+    }
+
+    # main organization
+    public function set_organization()
+    {
+        $this->session->set_userdata("organization", "3");
+        redirect('principal');
     }
 
     # iniciar sesion
     public function login()
     {
-        $this->load->view('main/header');
-        $this->load->view('main/login');
-        $this->load->view('main/footer');
+        if ($this->session->userdata("patient")) {
+            redirect('principal');
+        } else if ($this->session->userdata("profesional")) {
+            redirect('principal');
+        } else if ($this->session->userdata("organization")) {
+            redirect('principal');
+        } else {
+            $this->load->view('main/header');
+            $this->load->view('main/login');
+            $this->load->view('main/footer');
+        }
     }
 
     # registrar usuario
     public function registrer()
     {
-        $this->load->view('main/header');
-        $this->load->view('main/registrer');
-        $this->load->view('main/footer');
+        if ($this->session->userdata("patient")) {
+            redirect('principal');
+        } else if ($this->session->userdata("profesional")) {
+            redirect('principal');
+        } else if ($this->session->userdata("organization")) {
+            redirect('principal');
+        } else {
+            $this->load->view('main/header');
+            $this->load->view('main/registrer');
+            $this->load->view('main/footer');
+        }
     }
 
     # recuperar contraseña
@@ -39,28 +96,6 @@ class Main extends CI_Controller
         $this->load->view('main/recover');
         $this->load->view('main/footer');
     }
-    /*
-    public function index()
-    {
-    if ($this->session->userdata("patient")) {
-    $this->load->view('patient/principal/header');
-    $this->load->view('patient/principal/main');
-    $this->load->view('patient/principal/footer');
-    } else if ($this->session->userdata("profesional")) {
-    $this->load->view('profesional/principal/header');
-    $this->load->view('profesional/principal/main');
-    $this->load->view('profesional/principal/footer');
-    } else if ($this->session->userdata("organization")) {
-    $this->load->view('organization/principal/header');
-    $this->load->view('organization/principal/main');
-    $this->load->view('organization/principal/footer');
-    } else {
-    $this->load->view('main/header');
-    $this->load->view('main/home');
-    $this->load->view('main/footer');
-    }
-    }
-     */
 
     # validar usuario
     public function check_login()

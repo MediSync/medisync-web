@@ -9,6 +9,18 @@ $route['translate_uri_dashes'] = true;
 $route[''] = 'main';
 
 # main index
+$route['principal'] = 'main/principal';
+
+# main index
+$route['set_patient'] = 'main/set_patient';
+
+# main index
+$route['set_profesional'] = 'main/set_profesional';
+
+# main index
+$route['set_organization'] = 'main/set_organization';
+
+# main index
 $route['home'] = 'main';
 
 # iniciar sesion
@@ -22,3 +34,6 @@ $route['recover'] = 'main/recover';
 
 # validar usuario
 $route['check_login'] = 'main/check_login';
+
+# agregar profesional
+$route['add_profesional'] = 'main/add_profesional';
