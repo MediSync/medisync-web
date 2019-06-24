@@ -73,6 +73,13 @@ class Main extends CI_Controller
         }
     }
 
+    # logout
+    public function logout()
+    {
+        $this->session->sess_destroy();
+        redirect('');
+    }
+
     # registrar usuario
     public function registrer()
     {
@@ -127,6 +134,24 @@ class Main extends CI_Controller
             echo 1;
         } else {
             echo 0;
+        }
+    }
+
+    # gestion pacientes
+    public function gestion_pacientes()
+    {
+        if ($this->session->userdata("patient")) {
+            redirect('principal');
+        } else if ($this->session->userdata("profesional")) {
+            $this->load->view('profesional/principal/header');
+            $this->load->view('profesional/modules/gestion_pacientes');
+            $this->load->view('profesional/principal/footer');
+        } else if ($this->session->userdata("organization")) {
+            redirect('principal');
+        } else {
+            $this->load->view('main/header');
+            $this->load->view('main/login');
+            $this->load->view('main/footer');
         }
     }
 

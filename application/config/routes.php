@@ -26,6 +26,9 @@ $route['home'] = 'main';
 # iniciar sesion
 $route['login'] = 'main/login';
 
+# cerrar sesion
+$route['logout'] = 'main/logout';
+
 # registrar usuario
 $route['registrer'] = 'main/registrer';
 
@@ -37,3 +40,6 @@ $route['check_login'] = 'main/check_login';
 
 # agregar profesional
 $route['add_profesional'] = 'main/add_profesional';
+
+# gestion pacientes
+$route['gestion_pacientes'] = 'main/gestion_pacientes';

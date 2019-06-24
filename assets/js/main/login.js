@@ -16,6 +16,7 @@ $(document).ready(function () {
     });
 
     $('#birth_date').datepicker({ language: "es", autoclose: true });
+    $('#birth_date_org').datepicker({ language: "es", autoclose: true });
 });
 
 $("#btn_login").on("click", function (e) {
@@ -36,6 +37,7 @@ $("#btn_login").on("click", function (e) {
             Object.keys(result.patient).forEach(function (key) {
                 var object = (key, result.patient[key]);
                 if (object.email == email && object.password == CryptoJS.MD5(pass)) {
+                    logs = 1;
                     localStorage.setItem("patient", object.rut);
                     window.location.href = "set_patient";
                 }
@@ -50,6 +52,7 @@ $("#btn_login").on("click", function (e) {
             Object.keys(result.profesional).forEach(function (key) {
                 var object = (key, result.profesional[key]);
                 if (object.email == email && object.password == CryptoJS.MD5(pass)) {
+                    logs = 1;
                     localStorage.setItem("profesional", object.rut);
                     window.location.href = "set_profesional";
                 }
@@ -64,6 +67,7 @@ $("#btn_login").on("click", function (e) {
             Object.keys(result.organization).forEach(function (key) {
                 var object = (key, result.organization[key]);
                 if (object.email == email && object.password == CryptoJS.MD5(pass)) {
+                    logs = 1;
                     localStorage.setItem("organization", object.rut);
                     window.location.href = "set_organization";
                 }
