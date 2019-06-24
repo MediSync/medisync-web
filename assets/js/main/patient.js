@@ -89,18 +89,16 @@ function number_format(number, decimals, dec_point, thousands_sep) {
 }
 
 // Area Chart Example
-var datos = [0];
-var label = ["S0"];
-var i = 1;
+var datos = [];
+var label = [];
 jQuery.getJSON('https://projectmedisync.firebaseapp.com/api/v1/patient_range_of_motion', function (result) {
     Object.keys(result.patient).forEach(function (key) {
         var object = (key, result.patient[key]);
         if (object.rut == localStorage.getItem("patient")) {
             Object.keys(object.subCollection).forEach(function (key) {
                 var subobject = (key, object.subCollection[key]);
-                datos.push(subobject.datoy);
-                label.push("S" + i);
-                i++;
+                datos.push(subobject.datox);
+                label.push(subobject.fecha);
             });
             var ctx = document.getElementById("myAreaChart");
             var myLineChart = new Chart(ctx, {

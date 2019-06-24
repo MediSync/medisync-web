@@ -58,7 +58,6 @@
 			</div>
 		</div>
 	</div>
-	<!--
 	<div class="card shadow mb-4">
 		<div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
 			<h6 class="m-0 font-weight-bold text-primary">Evolucion</h6>
@@ -73,12 +72,11 @@
 						<div class=""></div>
 					</div>
 				</div>
-				<canvas id="myAreaChart" style="display: block; width: 459px; height: 320px;" width="459" height="320"
+				<canvas id="arearChart_pro" style="display: block; width: 459px; height: 320px;" width="459" height="320"
 					class="chartjs-render-monitor"></canvas>
 			</div>
 		</div>
 	</div>
-	-->
 	<div class="card shadow mb-4">
 
 		<div class="card-header py-3">
@@ -123,9 +121,9 @@
 					<h6 class="m-0 font-weight-bold text-primary">Historial</h6>
 				</div>
 				<div class="col-4 text-right text-white">
-					<a data-toggle="modal" data-target="#new_history_modal" class="btn btn-primary btn-sm" href="#">
+					<!--<a data-toggle="modal" data-target="#new_history_modal" class="btn btn-primary btn-sm" href="#">
 						Nuevo informe
-					</a>
+					</a>-->
 				</div>
 			</div>
 		</div>
@@ -146,8 +144,8 @@
 									style="width: 45%;">Profesional</th>
 								<th class="" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1"
 									style="width: 1%;"></th>
-								<th class="" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1"
-									style="width: 1%;"></th>
+								<!--<th class="" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1"
+									style="width: 1%;"></th>-->
 							</tr>
 						</thead>
 						<tbody id="table_history">

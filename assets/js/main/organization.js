@@ -159,39 +159,47 @@ $("#btn_edit_patient").on("click", function (e) {
     var address = $('#address_pac_edit').val();
     var email = $('#email_pac_edit').val();
     var phone = $('#phone_pac_edit').val();
+    var password = "";
 
-    var url = 'https://projectmedisync.firebaseapp.com/api/v1/patient/' + rut;
+    jQuery.getJSON('https://projectmedisync.firebaseapp.com/api/v1/patient/' + rut, function (object) {
+        console.log(object);
+        password = object.password;
 
-    $.ajax({
-        url: url,
-        type: 'post',
-        dataType: 'json',
-        data: {
-            rut: rut,
-            names: names,
-            last_name1: last_name1,
-            last_name2: last_name2,
-            birth_date: birth_date,
-            sexo: sexo,
-            address: address,
-            email: email,
-            phone: phone
-        },
-        success: function (o) {
-            console.log(o);
-            if (o == 1) {
-                toastr["success"]("Paciente Actualizado", "Operación Exitosa");
-                document.getElementById("form_edit_patient").reset();
-                $('#edit_modal').modal('hide');
-                table_body();
-            } else {
-                toastr["danger"]("Ups... algo paso", "Atención");
+        var url = 'https://projectmedisync.firebaseapp.com/api/v1/patient/' + rut;
+
+        $.ajax({
+            url: url,
+            type: 'post',
+            dataType: 'json',
+            data: {
+                rut: rut,
+                names: names,
+                last_name1: last_name1,
+                last_name2: last_name2,
+                birth_date: birth_date,
+                sexo: sexo,
+                address: address,
+                email: email,
+                phone: phone,
+                password: password
+            },
+            success: function (o) {
+                console.log(o);
+                if (o == 1) {
+                    toastr["success"]("Paciente Actualizado", "Operación Exitosa");
+                    document.getElementById("form_edit_patient").reset();
+                    $('#edit_modal').modal('hide');
+                    table_body();
+                } else {
+                    toastr["danger"]("Ups... algo paso", "Atención");
+                }
+            },
+            error: function () {
+                toastr["warning"]("Usuario no registrado", "Datos Incorrectos");
             }
-        },
-        error: function () {
-            toastr["warning"]("Usuario no registrado", "Datos Incorrectos");
-        }
+        });
     });
+
 });
 
 
@@ -215,12 +223,13 @@ function table_body2() {
         });
     });
 }
+
 function table_body_prof(rut) {
 
     jQuery.getJSON('https://projectmedisync.firebaseapp.com/api/v1/profesional/' + rut, function (object) {
         $("#datos_view_prof").empty();
         var fil = "";
-        fil += "<tr><td style='width: 30%;'><strong>Rut:</strong></td><td style='width: 70%;'>" + object.rut.toUpperCase() + "</td></tr>";
+        fil += "<tr><td style='width: 30%;'><strong>Rut:</strong></td><td style='width: 70%;'>" + object.rut.toUpperCase() + ((object.admin === "si") ? " (Administrador) " : "") + "</td></tr>";
         fil += "<tr><td style='width: 30%;'><strong>Nombre:</strong></td><td style='width: 70%;'>" + object.names.toUpperCase() + " " + object.last_name1.toUpperCase() + " " + object.last_name2.toUpperCase() + "</td></tr>";
         fil += "<tr><td style='width: 30%;'><strong>Fecha Nacimiento:</strong></td><td style='width: 70%;'>" + object.birth_date.toUpperCase() + "</td></tr>";
         fil += "<tr><td style='width: 30%;'><strong>Edad:</strong></td><td style='width: 70%;'>" + calculateAge(object.birth_date) + " AÑOS</td></tr>";
@@ -251,6 +260,7 @@ $('.modal').on('shown.bs.modal', function () {
 $("body").on("click", "#load_view_prof", function (e) {
     e.preventDefault();
     var rut = $(this).parents("tr").find("td").html();
+    console.log("rut=====> " + rut);
     table_body_prof(rut);
 });
 
@@ -268,6 +278,9 @@ $("body").on("click", "#load_edit_prof", function (e) {
         $('#address_prof_edit').val(object.address);
         $('#email_prof_edit').val(object.email);
         $('#phone_prof_edit').val(object.phone);
+        if (object.admin === "si") {
+            $('#admin_edit').prop('checked', true);
+        }
     });
 });
 
@@ -283,6 +296,11 @@ $("#btn_add_prof").on("click", function (e) {
     var email = $('#email_prof').val();
     var phone = $('#phone_prof').val();
     var password = CryptoJS.MD5(rut.split('-')[0]).toString();
+    var admin = "no"
+
+    if ($('#admin').is(":checked")) {
+        admin = "si"
+    }
 
     var url = 'https://projectmedisync.firebaseapp.com/api/v1/profesional/' + rut;
 
@@ -300,7 +318,8 @@ $("#btn_add_prof").on("click", function (e) {
             address: address,
             email: email,
             phone: phone,
-            password: password
+            password: password,
+            admin: admin
         },
         success: function (o) {
             console.log(o);
@@ -330,38 +349,53 @@ $("#btn_edit_prof").on("click", function (e) {
     var address = $('#address_prof_edit').val();
     var email = $('#email_prof_edit').val();
     var phone = $('#phone_prof_edit').val();
+    var password = "";
+    var admin = "no"
 
-    var url = 'https://projectmedisync.firebaseapp.com/api/v1/profesional/' + rut;
+    if ($('#admin_edit').is(":checked")) {
+        admin = "si"
+    } else {
+        admin = "no"
+    }
 
-    $.ajax({
-        url: url,
-        type: 'post',
-        dataType: 'json',
-        data: {
-            rut: rut,
-            names: names,
-            last_name1: last_name1,
-            last_name2: last_name2,
-            birth_date: birth_date,
-            sexo: sexo,
-            address: address,
-            email: email,
-            phone: phone
-        },
-        success: function (o) {
-            console.log(o);
-            if (o == 1) {
-                toastr["success"]("Profesional Actualizado", "Operación Exitosa");
-                document.getElementById("form_edit_prof").reset();
-                $('#edit_prof_modal').modal('hide');
-                table_body();
-            } else {
-                toastr["danger"]("Ups... algo paso", "Atención");
+    jQuery.getJSON('https://projectmedisync.firebaseapp.com/api/v1/profesional/' + rut, function (object) {
+        password = object.password;
+
+
+        var url = 'https://projectmedisync.firebaseapp.com/api/v1/profesional/' + rut;
+
+        $.ajax({
+            url: url,
+            type: 'post',
+            dataType: 'json',
+            data: {
+                rut: rut,
+                names: names,
+                last_name1: last_name1,
+                last_name2: last_name2,
+                birth_date: birth_date,
+                sexo: sexo,
+                address: address,
+                email: email,
+                phone: phone,
+                password: password,
+                admin: admin
+            },
+            success: function (o) {
+                console.log(o);
+                if (o == 1) {
+                    toastr["success"]("Profesional Actualizado", "Operación Exitosa");
+                    document.getElementById("form_edit_prof").reset();
+                    $('#edit_prof_modal').modal('hide');
+                    table_body();
+                } else {
+                    toastr["danger"]("Ups... algo paso", "Atención");
+                }
+            },
+            error: function () {
+                toastr["warning"]("Profesional no registrado", "Datos Incorrectos");
             }
-        },
-        error: function () {
-            toastr["warning"]("Profesional no registrado", "Datos Incorrectos");
-        }
+        });
     });
 });
 

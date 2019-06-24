@@ -69,7 +69,7 @@ function table_body_history(rut) {
                     fil += "<td >" + subobject.titulo.toUpperCase() + "</td>";
                     fil += "<td >" + subobject.responsable.toUpperCase() + "</td>";
                     fil += "<td ><a href='#' id='load_view_history' class='btn btn-sm btn-info float-right' data-toggle='modal' data-target='#view_history_modal'><i class='fas fa-eye'></i></a></td>";
-                    fil += "<td ><a href='#' id='load_edit_history' class='btn btn-sm btn-warning float-right' data-toggle='modal' data-target='#edit_history_modal'><i class='fas fa-edit'></i></a></td>";
+                    //fil += "<td ><a href='#' id='load_edit_history' class='btn btn-sm btn-warning float-right' data-toggle='modal' data-target='#edit_history_modal'><i class='fas fa-edit'></i></a></td>";
                     fil += "</tr>";
                     $("#table_history").append(fil);
                     i++;

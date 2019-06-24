@@ -96,6 +96,13 @@
 												<input type="text" class="form-control form-control-user" id="rut_prof"
 													name="rut_prof" placeholder="12345678-9">
 											</div>
+											<div class="form-group">
+												<div class="custom-control custom-switch" style="margin-left: 10px">
+													<input type="checkbox" class="custom-control-input" id="admin">
+													<label class="custom-control-label"
+														for="admin">Administrador</label>
+												</div>
+											</div>
 										</div>
 
 										<div class="row form-group">
@@ -103,8 +110,8 @@
 												<strong>Nombre</strong>
 											</div>
 											<div class="col-6">
-												<input type="text" class="form-control form-control-user" id="names_prof"
-													name="names_prof" placeholder="">
+												<input type="text" class="form-control form-control-user"
+													id="names_prof" name="names_prof" placeholder="">
 											</div>
 										</div>
 										<div class="row form-group">
@@ -130,8 +137,8 @@
 												<strong>Fecha nacimiento</strong>
 											</div>
 											<div class="col-3">
-												<input type="text" class="form-control selectpicker" id="birth_date_prof"
-													name="birth_date_prof" placeholder="">
+												<input type="text" class="form-control selectpicker"
+													id="birth_date_prof" name="birth_date_prof" placeholder="">
 											</div>
 											<div class="col-1 text-right">
 												<strong>Sexo</strong>
@@ -160,8 +167,8 @@
 												<strong>Telefono</strong>
 											</div>
 											<div class="col-4">
-												<input type="text" class="form-control form-control-user" id="phone_prof"
-													name="phone_prof" placeholder="">
+												<input type="text" class="form-control form-control-user"
+													id="phone_prof" name="phone_prof" placeholder="">
 											</div>
 										</div>
 
@@ -225,6 +232,13 @@
 												<input readonly type="text" class="form-control form-control-user"
 													id="rut_prof_edit" name="rut_prof_edit" placeholder="12345678-9">
 											</div>
+											<div class="form-group">
+												<div class="custom-control custom-switch" style="margin-left: 10px">
+													<input type="checkbox" class="custom-control-input" id="admin_edit">
+													<label class="custom-control-label"
+														for="admin_edit">Administrador</label>
+												</div>
+											</div>
 										</div>
 
 										<div class="row form-group">
@@ -242,7 +256,8 @@
 											</div>
 											<div class="col-6">
 												<input type="text" class="form-control form-control-user"
-													id="last_name1_prof_edit" name="last_name1_prof_edit" placeholder="">
+													id="last_name1_prof_edit" name="last_name1_prof_edit"
+													placeholder="">
 											</div>
 										</div>
 										<div class="row form-group">
@@ -251,7 +266,8 @@
 											</div>
 											<div class="col-6">
 												<input type="text" class="form-control form-control-user"
-													id="last_name2_prof_edit" name="last_name2_prof_edit" placeholder="">
+													id="last_name2_prof_edit" name="last_name2_prof_edit"
+													placeholder="">
 											</div>
 										</div>
 										<div class="row form-group">
@@ -260,7 +276,8 @@
 											</div>
 											<div class="col-3">
 												<input type="text" class="form-control selectpicker"
-													id="birth_date_prof_edit" name="birth_date_prof_edit" placeholder="">
+													id="birth_date_prof_edit" name="birth_date_prof_edit"
+													placeholder="">
 											</div>
 											<div class="col-1 text-right">
 												<strong>Sexo</strong>
