@@ -50,7 +50,7 @@
             <hr class="sidebar-divider my-0">
             <!-- Heading -->
             <div class="sidebar-heading">
-                Menu Profesional
+            Portal Profesional
             </div>
             <!-- Nav Item - Dashboard -->
             <li class="nav-item">

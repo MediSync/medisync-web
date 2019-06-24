@@ -1,5 +1,5 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
 $route['default_controller'] = 'main';
 $route['404_override'] = '';
@@ -43,3 +43,11 @@ $route['add_profesional'] = 'main/add_profesional';
 
 # gestion pacientes
 $route['gestion_pacientes'] = 'main/gestion_pacientes';
+
+# gestion historial
+$route['gestion_historial'] = 'main/gestion_historial';
+
+$route['gestion_prof'] = 'main/gestion_prof';
+
+$route['gestion_paci'] = 'main/gestion_paci';
+

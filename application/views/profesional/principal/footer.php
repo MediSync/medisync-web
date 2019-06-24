@@ -19,6 +19,7 @@
 <script type="text/javascript" src="assets/lib/bootstrap-datepicker-1.6.4/locales/bootstrap-datepicker.es.min.js"></script>
 <script type="text/javascript" src="assets/lib/jquery.rut/jquery.rut.js"></script>
 <script type="text/javascript" src="assets/js/main/profesional.js"></script>
+<script type="text/javascript" src="assets/js/main/historial.js"></script>
 <script src="assets/lib/admin-2/js/custom.js"></script>
 
 

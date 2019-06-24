@@ -4,7 +4,7 @@
 	<div class="card shadow mb-4">
 
 		<div class="card-header py-3">
-			<h6 class="m-0 font-weight-bold text-primary">Pacientes</h6>
+			<h6 class="m-0 font-weight-bold text-primary">Gestión Pacientes</h6>
 		</div>
 		<div class="card-body">
 			<div class="table-responsive">
@@ -34,7 +34,6 @@
 										<th class="" tabindex="3" aria-controls="dataTable" rowspan="1" colspan="1"
 											aria-sort="ascending" aria-label="" style="width: 15%;">Fecha
 											Nacimiento</th>
-										<th class="" style="width: 1%;"></th>
 										<th class="" style="width: 1%;"></th>
 										<th class="" style="width: 1%;"></th>
 									</tr>

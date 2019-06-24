@@ -3,7 +3,6 @@ $(document).ready(function () {
         "closeButton": true,
         "positionClass": "toast-top-right"
     }
-
     var user = localStorage.getItem("profesional");
 
     jQuery.getJSON('https://projectmedisync.firebaseapp.com/api/v1/profesional/' + user, function (result) {
@@ -13,12 +12,10 @@ $(document).ready(function () {
     $('#birth_date_pac').datepicker({ language: "es", autoclose: true });
     $('#birth_date_pac_edit').datepicker({ language: "es", autoclose: true });
 
-
     table_body();
 });
 
 function table_body() {
-
     jQuery.getJSON('https://projectmedisync.firebaseapp.com/api/v1/patient/', function (result) {
         $("#table_body").empty();
         Object.keys(result.patient).forEach(function (key) {
@@ -92,6 +89,14 @@ $("body").on("click", "#load_edit_paciente", function (e) {
         $('#email_pac_edit').val(object.email);
         $('#phone_pac_edit').val(object.phone);
     });
+});
+
+// cargar historial paciente
+$("body").on("click", "#load_history_paciente", function (e) {
+    e.preventDefault();
+    var rut = $(this).parents("tr").find("td").html();
+    localStorage.setItem("patient_history", rut);
+    window.location.href = "gestion_historial";
 });
 
 $("#btn_add_patient").on("click", function (e) {

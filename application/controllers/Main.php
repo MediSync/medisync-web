@@ -155,4 +155,57 @@ class Main extends CI_Controller
         }
     }
 
+    # gestion historial
+    public function gestion_historial()
+    {
+        if ($this->session->userdata("patient")) {
+            redirect('principal');
+        } else if ($this->session->userdata("profesional")) {
+            $this->load->view('profesional/principal/header');
+            $this->load->view('profesional/modules/gestion_historial');
+            $this->load->view('profesional/principal/footer');
+        } else if ($this->session->userdata("organization")) {
+            redirect('principal');
+        } else {
+            $this->load->view('main/header');
+            $this->load->view('main/login');
+            $this->load->view('main/footer');
+        }
+    }
+
+    # gestion historial
+    public function gestion_prof()
+    {
+        if ($this->session->userdata("patient")) {
+            redirect('principal');
+        } else if ($this->session->userdata("profesional")) {
+            redirect('principal');
+        } else if ($this->session->userdata("organization")) {
+            $this->load->view('organization/principal/header');
+            $this->load->view('organization/modules/gestion_prof');
+            $this->load->view('organization/principal/footer');
+        } else {
+            $this->load->view('main/header');
+            $this->load->view('main/login');
+            $this->load->view('main/footer');
+        }
+    }
+
+    # gestion historial
+    public function gestion_paci()
+    {
+        if ($this->session->userdata("patient")) {
+            redirect('principal');
+        } else if ($this->session->userdata("profesional")) {
+            redirect('principal');
+        } else if ($this->session->userdata("organization")) {
+            $this->load->view('organization/principal/header');
+            $this->load->view('organization/modules/gestion_paci');
+            $this->load->view('organization/principal/footer');
+        } else {
+            $this->load->view('main/header');
+            $this->load->view('main/login');
+            $this->load->view('main/footer');
+        }
+    }
 }
