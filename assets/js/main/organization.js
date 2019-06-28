@@ -387,7 +387,7 @@ $("#btn_edit_prof").on("click", function (e) {
                     toastr["success"]("Profesional Actualizado", "Operación Exitosa");
                     document.getElementById("form_edit_prof").reset();
                     $('#edit_prof_modal').modal('hide');
-                    table_body();
+                    table_body2();
                 } else {
                     toastr["danger"]("Ups... algo paso", "Atención");
                 }
