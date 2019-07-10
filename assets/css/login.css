@@ -6,7 +6,11 @@ body {
     background-size: cover;
     text-align: center;
     font-family: 'Varela Round', sans-serif;
-    color: #fff;
+}
+
+.form-horizontal {
+    margin-left: 15px;
+    margin-right: 15px;
 }
 
 .wrapper {
@@ -74,11 +78,45 @@ input[type="password"] {
     font-weight: 500;
 }
 
-.btn-primary {
+.btn.btn-primary {
     color: #fff;
-    background-color: #304ffd;
-    border-color: #3751e5;
-}
+    background-color: #199EB8;
+    border-color: #199EB8;
+  }
+  .btn.btn-primary.focus,
+  .btn.btn-primary:focus {
+    color: #fff;
+    background-color: #0190b0;
+    border-color: #0190b0;
+    outline: none;
+    box-shadow: none;
+  }
+  .btn.btn-primary:hover {
+    color: #fff;
+    background-color: #0190b0;
+    border-color: #0190b0;
+    outline: none;
+    box-shadow: none;
+  }
+  .btn.btn-primary.active,
+  .btn.btn-primary:active {
+    color: #fff;
+    background-color: #0190b0;
+    border-color: #0190b0;
+    outline: none;
+  }
+  .btn.btn-primary.active.focus,
+  .btn.btn-primary.active:focus,
+  .btn.btn-primary.active:hover,
+  .btn.btn-primary:active.focus,
+  .btn.btn-primary:active:focus,
+  .btn.btn-primary:active:hover {
+    color: #fff;
+    background-color: #0190b0;
+    border-color: #0190b0;
+    outline: none;
+    box-shadow: none;
+  }
 
 .footer-login {
     position: fixed;
@@ -93,4 +131,8 @@ img {
     padding: 3px;
     margin-top: 40px;
     margin-bottom: 0px;
+}
+
+.popover {
+    width: 300px !important;
 }

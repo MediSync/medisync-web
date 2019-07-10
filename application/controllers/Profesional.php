@@ -12,9 +12,9 @@ class Profesional extends CI_Controller
     public function index()
     {
         if ($this->session->userdata("user")) {
-            $this->load->view('profesional/principal/header');
-            $this->load->view('profesional/principal/main');
-            $this->load->view('profesional/principal/footer');
+            $this->load->view('profesional/header');
+            $this->load->view('profesional/main');
+            $this->load->view('profesional/footer');
         } else {
             redirect('');
         }

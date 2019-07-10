@@ -5,41 +5,101 @@ $(document).ready(function () {
     }
     var user = localStorage.getItem("profesional");
 
+    var db = firebase.firestore();
+
+    var docPro = db.collection("profesional").doc(user);
+
+    docPro.get().then(function (doc2) {
+        if (doc2.exists) {
+            $("#nav_brand").text("Bienvenido " + doc2.data().names + " " + doc2.data().last_name1 + " " + doc2.data().last_name2);
+            $("#loader").removeClass("is-active");
+        } else {
+            console.log("No such document!");
+        }
+    }).catch(function (error) {
+        console.log("Error getting document:", error);
+    });
+
+    /*
     jQuery.getJSON('https://projectmedisync.firebaseapp.com/api/v1/profesional/' + user, function (result) {
         $("#lbl_nav").text("BIEVENIDO " + result.names.toUpperCase() + " " + result.last_name1.toUpperCase() + " " + result.last_name2.toUpperCase());
         table_body(result.admin);
     });
+    */
 
+    /*
     $('#birth_date_pac').datepicker({ language: "es", autoclose: true });
     $('#birth_date_pac_edit').datepicker({ language: "es", autoclose: true });
+    */
 
-    
 });
 
-function table_body(admin) {
-    jQuery.getJSON('https://projectmedisync.firebaseapp.com/api/v1/patient/', function (result) {
+function calculateAge(birthday) {
+    var birthday_arr = birthday.split("/");
+    var birthday_date = new Date(birthday_arr[2], birthday_arr[1] - 1, birthday_arr[0]);
+    var ageDifMs = Date.now() - birthday_date.getTime();
+    var ageDate = new Date(ageDifMs);
+    return Math.abs(ageDate.getUTCFullYear() - 1970);
+}
+
+
+$("#gestion_pacientes").on("click", function (e) {
+    e.preventDefault();
+    $("#loader").addClass("is-active");
+    $("main").load("gestion_pacientes");
+    table_body();
+});
+
+function table_body() {
+    var db = firebase.firestore();
+    db.collection("patient").get().then((querySnapshot) => {
         $("#table_body").empty();
-        Object.keys(result.patient).forEach(function (key) {
-            var object = (key, result.patient[key]);
+        querySnapshot.forEach((doc) => {
             var fil = "<tr>";
-            fil += "<td >" + object.rut.toUpperCase() + "</td>";
-            fil += "<td >" + object.names.toUpperCase() + " " + object.last_name1.toUpperCase() + " " + object.last_name2.toUpperCase() + "</td>";
-            fil += "<td >" + object.sexo.toUpperCase() + "</td>";
-            fil += "<td >" + calculateAge(object.birth_date) + "</td>";
-            fil += "<td >" + object.birth_date.toUpperCase() + "</td>";
-            fil += "<td ><a href='#' id='load_history_paciente' class='btn btn-sm btn-success float-right'><i class='fas fa-file'></i></a></td>";
+            fil += "<td >" + `${doc.data().rut}` + "</td>";
+            fil += "<td >" + `${doc.data().names}` + " " + `${doc.data().last_name1}` + " " + `${doc.data().last_name2}` + "</td>";
+            fil += "<td >" + `${doc.data().sexo}` + "</td>";
+            fil += "<td >" + calculateAge(`${doc.data().birth_date}`) + "</td>";
+            fil += "<td >" + `${doc.data().birth_date}` + "</td>";
+            fil += "<td ><a href='#' id='load_history_paciente' class='btn btn-sm btn-success float-right' data-toggle='tooltip' data-placement='top' title='Ver ficha clinica'><i class='fas fa-file'></i></a></td>";
             fil += "<td ><a href='#' id='load_view_paciente' class='btn btn-sm btn-info float-right' data-toggle='modal' data-target='#view_modal'><i class='fas fa-eye'></i></a></td>";
-            if (admin === "si") {
-                fil += "<td ><a href='#' id='load_edit_paciente' class='btn btn-sm btn-warning float-right' data-toggle='modal' data-target='#edit_modal'><i class='fas fa-edit'></i></a></td>";                
+            if (`${doc.data().admin}` === "si") {
+                fil += "<td ><a href='#' id='load_edit_paciente' class='btn btn-sm btn-warning float-right' data-toggle='modal' data-target='#edit_modal'><i class='fas fa-edit'></i></a></td>";
             } else {
-                fil += "<td ><a disabled href='#' class='btn btn-sm btn-warning float-right disabled'><i class='fas fa-edit'></i></a></td>";                
+                fil += "<td ><a disabled href='#' class='btn btn-sm btn-warning float-right disabled'><i class='fas fa-edit'></i></a></td>";
             }
             fil += "</tr>";
             $("#table_body").append(fil);
+            $("#loader").removeClass("is-active");
         });
     });
+
+    /*
+        jQuery.getJSON('https://projectmedisync.firebaseapp.com/api/v1/patient/', function (result) {
+            $("#table_body").empty();
+            Object.keys(result.patient).forEach(function (key) {
+                var object = (key, result.patient[key]);
+                var fil = "<tr>";
+                fil += "<td >" + object.rut.toUpperCase() + "</td>";
+                fil += "<td >" + object.names.toUpperCase() + " " + object.last_name1.toUpperCase() + " " + object.last_name2.toUpperCase() + "</td>";
+                fil += "<td >" + object.sexo.toUpperCase() + "</td>";
+                fil += "<td >" + calculateAge(object.birth_date) + "</td>";
+                fil += "<td >" + object.birth_date.toUpperCase() + "</td>";
+                fil += "<td ><a href='#' id='load_history_paciente' class='btn btn-sm btn-success float-right'><i class='fas fa-file'></i></a></td>";
+                fil += "<td ><a href='#' id='load_view_paciente' class='btn btn-sm btn-info float-right' data-toggle='modal' data-target='#view_modal'><i class='fas fa-eye'></i></a></td>";
+                if (admin === "si") {
+                    fil += "<td ><a href='#' id='load_edit_paciente' class='btn btn-sm btn-warning float-right' data-toggle='modal' data-target='#edit_modal'><i class='fas fa-edit'></i></a></td>";
+                } else {
+                    fil += "<td ><a disabled href='#' class='btn btn-sm btn-warning float-right disabled'><i class='fas fa-edit'></i></a></td>";
+                }
+                fil += "</tr>";
+                $("#table_body").append(fil);
+            });
+        });
+    */
 }
 
+/*
 function table_body_paciente(rut) {
 
     jQuery.getJSON('https://projectmedisync.firebaseapp.com/api/v1/patient/' + rut, function (object) {
@@ -57,13 +117,6 @@ function table_body_paciente(rut) {
     });
 }
 
-function calculateAge(birthday) {
-    var birthday_arr = birthday.split("/");
-    var birthday_date = new Date(birthday_arr[2], birthday_arr[1] - 1, birthday_arr[0]);
-    var ageDifMs = Date.now() - birthday_date.getTime();
-    var ageDate = new Date(ageDifMs);
-    return Math.abs(ageDate.getUTCFullYear() - 1970);
-}
 
 $('.modal').on('shown.bs.modal', function () {
     //Make sure the modal and backdrop are siblings (changes the DOM)
@@ -342,4 +395,4 @@ jQuery.getJSON('https://projectmedisync.firebaseapp.com/api/v1/patient_range_of_
     });
 });
 console.log(datos);
-
+*/

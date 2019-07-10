@@ -11,7 +11,21 @@ class Main extends CI_Controller
     # main index
     public function index()
     {
-        $this->load->view('main/home');
+        if ($this->session->userdata("patient")) {
+            $this->load->view('patient/principal/header');
+            $this->load->view('patient/principal/main');
+            $this->load->view('patient/principal/footer');
+        } else if ($this->session->userdata("profesional")) {
+            $this->load->view('profesional/header');
+            $this->load->view('profesional/main');
+            $this->load->view('profesional/footer');
+        } else if ($this->session->userdata("organization")) {
+            $this->load->view('organization/principal/header');
+            $this->load->view('organization/principal/main');
+            $this->load->view('organization/principal/footer');
+        } else {
+            $this->load->view('main/login');
+        }
     }
 
     # main index
@@ -22,17 +36,15 @@ class Main extends CI_Controller
             $this->load->view('patient/principal/main');
             $this->load->view('patient/principal/footer');
         } else if ($this->session->userdata("profesional")) {
-            $this->load->view('profesional/principal/header');
-            $this->load->view('profesional/principal/main');
-            $this->load->view('profesional/principal/footer');
+            $this->load->view('profesional/header');
+            $this->load->view('profesional/main');
+            $this->load->view('profesional/footer');
         } else if ($this->session->userdata("organization")) {
             $this->load->view('organization/principal/header');
             $this->load->view('organization/principal/main');
             $this->load->view('organization/principal/footer');
         } else {
-            $this->load->view('main/header');
             $this->load->view('main/login');
-            $this->load->view('main/footer');
         }
     }
 
@@ -143,15 +155,11 @@ class Main extends CI_Controller
         if ($this->session->userdata("patient")) {
             redirect('principal');
         } else if ($this->session->userdata("profesional")) {
-            $this->load->view('profesional/principal/header');
-            $this->load->view('profesional/modules/gestion_pacientes');
-            $this->load->view('profesional/principal/footer');
+            $this->load->view('profesional/gestion_pacientes');
         } else if ($this->session->userdata("organization")) {
             redirect('principal');
         } else {
-            $this->load->view('main/header');
-            $this->load->view('main/login');
-            $this->load->view('main/footer');
+            redirect('principal');
         }
     }
 

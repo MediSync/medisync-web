@@ -1,38 +1,42 @@
 <!-- Begin Page Content -->
+<br>
 <div class="container-fluid">
 
 	<div class="card shadow mb-4">
 
-		<div class="card-header py-3">
-			<h6 class="m-0 font-weight-bold text-primary">Pacientes</h6>
+		<div class="card-header">
+			<div class="row">
+				<div class="col-md-10">
+					<h4 style="margin-top: 4px">Gestión Pacientes</h4>
+				</div>
+				<div class="col-md-2">
+					<a href="#" data-toggle="modal" data-target="#new_modal" class="btn btn-primary btn-block">
+						<i class="fas fa-plus"></i> Nuevo paciente
+					</a>
+				</div>
+			</div>
 		</div>
 		<div class="card-body">
-			<div class="table-responsive">
+			<div>
 				<div id="dataTable_wrapper" class="dataTables_wrapper dt-bootstrap4">
-					<div class="row">
-						<div class="col-sm-12 col-md-6">
-							<a href="#" data-toggle="modal" data-target="#new_modal" class="btn btn-primary">
-								<i class="fas fa-plus"></i> Nuevo paciente
-							</a>
-						</div>
-					</div>
+					<br>
 					<div class="row">
 						<div class="col-sm-12">
-							<table class="table table-bordered table-sm dataTable" id="dataTable" width="100%"
-								cellspacing="0" role="grid" aria-describedby="dataTable_info" style="width: 100%;">
+							<table class="table table-sm table-bordered dataTable" id="dataTable" width="100%" cellspacing="0"
+								role="grid" aria-describedby="dataTable_info" style="width: 100%;">
 								<thead>
 									<tr role="row">
 										<th class="" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1"
-											aria-sort="ascending" aria-label="" style="width: 10%;">Rut</th>
+											aria-sort="ascending">Rut</th>
 										<th class="" tabindex="1" aria-controls="dataTable" rowspan="1" colspan="1"
-											aria-sort="ascending" aria-label="" style="width: 30%;">Nombre
+											aria-sort="ascending">Nombre
 											Completo</th>
 										<th class="" tabindex="2" aria-controls="dataTable" rowspan="1" colspan="1"
-											aria-sort="ascending" aria-label="" style="width: 5%;">Sexo</th>
+											aria-sort="ascending">Sexo</th>
 										<th class="" tabindex="2" aria-controls="dataTable" rowspan="1" colspan="1"
-											aria-sort="ascending" aria-label="" style="width: 5%;">Edad</th>
+											aria-sort="ascending">Edad</th>
 										<th class="" tabindex="3" aria-controls="dataTable" rowspan="1" colspan="1"
-											aria-sort="ascending" aria-label="" style="width: 15%;">Fecha
+											aria-sort="ascending">Fecha
 											Nacimiento</th>
 										<th class="" style="width: 1%;"></th>
 										<th class="" style="width: 1%;"></th>
