@@ -21,7 +21,7 @@
 <body>
     <!-- Image and text -->
     <nav class="navbar navbar-dark">
-        <a id="nav_brand" class="navbar-brand" href="#">Bienvenido a MediSync</a>
+        <a class="navbar-brand" href="#"><label id="nav_brand">Bienvenido a MediSync</label><small>Portal Profesional</small></a>
         <div class="my-2 my-lg-0">
             <a class="btn btn-secondary my-2 my-sm-0" id="boton" href="logout">Cerrar Sesión&nbsp;&nbsp;&nbsp;<i
                     class="fas fa-sign-out-alt"></i></a>

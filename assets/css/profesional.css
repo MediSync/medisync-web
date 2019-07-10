@@ -49,3 +49,27 @@ body {
     outline: none;
     box-shadow: none;
 }
+
+.navbar-brand small {
+    display: block;
+    font-size: 11px;
+    white-space: normal;
+    position: absolute;
+}
+
+.navbar-brand {
+    display: inline-block;
+    padding-top: .3000rem;
+    padding-bottom: .8125rem;
+}
+
+label {
+    display: inline-block;
+    margin-bottom: 0;
+}
+
+@media (max-width: 575.98px) {
+    .navbar-brand small {
+        display: none;
+    }
+}

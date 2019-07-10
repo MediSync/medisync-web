@@ -169,15 +169,11 @@ class Main extends CI_Controller
         if ($this->session->userdata("patient")) {
             redirect('principal');
         } else if ($this->session->userdata("profesional")) {
-            $this->load->view('profesional/principal/header');
-            $this->load->view('profesional/modules/gestion_historial');
-            $this->load->view('profesional/principal/footer');
+            $this->load->view('profesional/gestion_historial');
         } else if ($this->session->userdata("organization")) {
             redirect('principal');
         } else {
-            $this->load->view('main/header');
             $this->load->view('main/login');
-            $this->load->view('main/footer');
         }
     }
 
