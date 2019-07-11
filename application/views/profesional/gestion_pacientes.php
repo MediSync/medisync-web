@@ -1,9 +1,7 @@
 <!-- Begin Page Content -->
 <br>
 <div class="container-fluid">
-
 	<div class="card shadow mb-4">
-
 		<div class="card-header">
 			<div class="row">
 				<div class="col-md-9">

@@ -63,7 +63,7 @@
                     <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
                         <i class="fa fa-bars"></i>
                     </button>
-                    <div class="mx-3"><laber id="lbl_nav"></laber></div>
+                    <div class="mx-3"><label id="lbl_nav"></label></div>
                     <!-- Topbar Navbar -->
                     <ul class="navbar-nav ml-auto">
                         <a id="boton" href="logout" class="btn btn-light btn-icon-split border-left-danger">

@@ -288,301 +288,141 @@ $("body").on("click", "#load_history_paciente", function (e) {
     e.preventDefault();
     $("#loader").addClass("is-active");
     var rut = $(this).parents("tr").find("td").html();
+    localStorage.setItem("rut_pat", rut);
+
     $("main").load("gestion_historial");
 
-    jQuery.getJSON('https://projectmedisync.firebaseapp.com/api/v1/patient/' + rut, function (object) {
-        $("#rut_hist").text(object.rut.toUpperCase());
-        $("#age_hist").text(calculateAge(object.birth_date));
-        $("#name_hist").text(object.names.toUpperCase() + " " + object.last_name1.toUpperCase() + " " + object.last_name2.toUpperCase());
-        $("#sexo_hist").text(((object.sexo.toUpperCase() === "M") ? "MASCULINO" : "FEMENINO"));
-        $("#birth_hist").text(object.birth_date.toUpperCase());
-        $("#email_hist").text(object.email.toUpperCase());
-        $("#phone_hist").text(object.phone.toUpperCase());
-        $("#address_hist").text(object.address.toUpperCase());
-        $("#loader").removeClass("is-active");
+    var db = firebase.firestore();
+    var docPro = db.collection("patient").doc(rut);
+
+    docPro.get().then(function (doc) {
+        if (doc.exists) {
+            $("#rut_hist").text(`${doc.data().rut.toUpperCase()}`);
+            $("#age_hist").text(calculateAge(`${doc.data().birth_date.toUpperCase()}`));
+            $("#name_hist").text(`${doc.data().names.toUpperCase()}` + " " + `${doc.data().last_name1.toUpperCase()}` + " " + `${doc.data().last_name2.toUpperCase()}`);
+            $("#sexo_hist").text(((`${doc.data().sexo.toUpperCase()}` === "M") ? "MASCULINO" : "FEMENINO"));
+            $("#birth_hist").text(`${doc.data().birth_date.toUpperCase()}`);
+            $("#email_hist").text(`${doc.data().email.toUpperCase()}`);
+            $("#phone_hist").text(`${doc.data().phone.toUpperCase()}`);
+            $("#address_hist").text(`${doc.data().address.toUpperCase()}`);
+            $("#loader").removeClass("is-active");
+        } else {
+            toastr["warning"]("Algo sucedio, contactese con soporte", "Atención");
+        }
+    }).catch(function (error) {
+        console.log("Error getting document:", error);
     });
-});
-
-
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-/*
-$(document).ready(function () {
-    jQuery.getJSON('https://projectmedisync.firebaseapp.com/api/v1/patient/' + patient_history, function (object) {
-        $("#rut_hist").text(object.rut.toUpperCase());
-        $("#age_hist").text(calculateAge(object.birth_date));
-        $("#name_hist").text(object.names.toUpperCase() + " " + object.last_name1.toUpperCase() + " " + object.last_name2.toUpperCase());
-        $("#sexo_hist").text(((object.sexo.toUpperCase() === "M") ? "MASCULINO" : "FEMENINO"));
-        $("#birth_hist").text(object.birth_date.toUpperCase());
-        $("#email_hist").text(object.email.toUpperCase());
-        $("#phone_hist").text(object.phone.toUpperCase());
-        $("#address_hist").text(object.address.toUpperCase());
-    });
-
-    $('#date_hist').datepicker({ language: "es", autoclose: true }).datepicker("setDate", new Date());
-
-    table_body_history(patient_history);
-    table_body_evaluacion(patient_history);
 
 });
-
-function table_body_evaluacion(rut) {
-    jQuery.getJSON('https://projectmedisync.firebaseapp.com/api/v1/patient_range_of_motion', function (result) {
-        $("#table_evaluacion").empty();
-        Object.keys(result.patient).forEach(function (key) {
-            var object = (key, result.patient[key]);
-            if (object.rut == rut) {
-                var i = 0;
-                Object.keys(object.subCollection).forEach(function (key) {
-                    var subobject = (key, object.subCollection[key]);
-                    var fil = "<tr>";
-                    fil += "<td style='display: none;'>" + Object.keys(object.subCollection)[i] + "</td>";
-                    fil += "<td >" + subobject.fecha.toUpperCase() + "</td>";
-                    fil += "<td >" + subobject.hora.toUpperCase() + "</td>";
-                    fil += "<td >" + subobject.datox.toUpperCase() + "</td>";
-                    fil += "<td >" + subobject.datoy.toUpperCase() + "</td>";
-                    fil += "</tr>";
-                    $("#table_evaluacion").append(fil);
-                    i++;
-                });
-            }
-        });
-    });
-}
-
-function table_body_history(rut) {
-    jQuery.getJSON('https://projectmedisync.firebaseapp.com/api/v1/patient_history', function (result) {
-        $("#table_history").empty();
-        Object.keys(result.patient).forEach(function (key) {
-            var object = (key, result.patient[key]);
-            if (object.rut == rut) {
-                var i = 0;
-                Object.keys(object.subCollection).forEach(function (key) {
-                    var subobject = (key, object.subCollection[key]);
-                    var fil = "<tr>";
-                    fil += "<td style='display: none;'>" + Object.keys(object.subCollection)[i] + "</td>";
-                    fil += "<td >" + subobject.fecha.toUpperCase() + "</td>";
-                    fil += "<td >" + subobject.titulo.toUpperCase() + "</td>";
-                    fil += "<td >" + subobject.responsable.toUpperCase() + "</td>";
-                    fil += "<td ><a href='#' id='load_view_history' class='btn btn-sm btn-info float-right' data-toggle='modal' data-target='#view_history_modal'><i class='fas fa-eye'></i></a></td>";
-                    //fil += "<td ><a href='#' id='load_edit_history' class='btn btn-sm btn-warning float-right' data-toggle='modal' data-target='#edit_history_modal'><i class='fas fa-edit'></i></a></td>";
-                    fil += "</tr>";
-                    $("#table_history").append(fil);
-                    i++;
-                });
-            }
-        });
-    });
-}
-
-function table_view_history(id) {
-    var rut = localStorage.getItem("patient_history");
-    jQuery.getJSON('https://projectmedisync.firebaseapp.com/api/v1/patient_history', function (result) {
-        $("#datos_history").empty();
-        Object.keys(result.patient).forEach(function (key) {
-            var object = (key, result.patient[key]);
-            if (object.rut == rut) {
-                var i = 0;
-                Object.keys(object.subCollection).forEach(function (key) {
-                    if (Object.keys(object.subCollection)[i] == id) {
-                        var subobject = (key, object.subCollection[key]);
-                        $("#datos_history").empty();
-                        var fil = "";
-                        fil += "<tr><td style='width: 30%;'><strong>Titulo:</strong></td><td style='width: 70%;'>" + subobject.titulo.toUpperCase() + "</td></tr>";
-                        fil += "<tr><td style='width: 30%;'><strong>Fecha:</strong></td><td style='width: 70%;'>" + subobject.fecha.toUpperCase() + "</td></tr>";
-                        fil += "<tr><td style='width: 30%;'><strong>Hora:</strong></td><td style='width: 70%;'>" + subobject.hora.toUpperCase() + "</td></tr>";
-                        fil += "<tr><td style='width: 30%;'><strong>Responsable:</strong></td><td style='width: 70%;'>" + subobject.responsable.toUpperCase() + "</td></tr>";
-                        fil += "<tr><td style='width: 30%;'><strong>Evolución:</strong></td><td style='width: 70%;'>" + subobject.text_Evolucion.toUpperCase() + "</td></tr>";
-                        $("#datos_history").append(fil);
-                    }
-                    i++;
-                });
-            }
-        });
-    });
-}
 
 // cargar vista paciente
 $("body").on("click", "#load_view_history", function (e) {
     e.preventDefault();
     var id = $(this).parents("tr").find("td").html();
+    console.log(id);
     table_view_history(id);
 });
 
-$("#btn_add_history").on("click", function (e) {
+// cargar vista paciente
+$("body").on("click", "#load_edit_history", function (e) {
     e.preventDefault();
-    var title_hist = $('#title_hist').val();
-    var date_hist = $('#date_hist').val();
-    var time_hist = $('#time_hist').val();
-    var resp_hist = $('#resp_hist').val();
-    var evol_hist = $('#evol_hist').val();
+    var id = $(this).parents("tr").find("td").html();
+    console.log(id);
+    table_edit_history(id);
+});
 
-    var url = 'https://projectmedisync.firebaseapp.com/api/v1/patient/' + rut;
-
-    $.ajax({
-        url: url,
-        type: 'post',
-        dataType: 'json',
-        data: {
-            titulo: title_hist,
-            fecha: date_hist,
-            hora: time_hist,
-            responsable: resp_hist,
-            text_Evolucion: evol_hist
-        },
-        success: function (o) {
-            console.log(o);
-            if (o == 1) {
-                toastr["success"]("Paciente registrado", "Operación Exitosa");
-                document.getElementById("form_new_patient").reset();
-                $('#new_modal').modal('hide');
-                table_body();
-            } else {
-                toastr["danger"]("Ups... algo paso", "Atención");
-            }
-        },
-        error: function () {
-            toastr["warning"]("Usuario no registrado", "Datos Incorrectos");
-        }
-    });
+// cargar vista paciente
+$("body").on("click", "#load_edit_eval", function (e) {
+    e.preventDefault();
+    var id = $(this).parents("tr").find("td").html();
+    console.log(id);
+    table_edit_eval(id);
 });
 
 
 
+function table_view_history(id) {
+    $("#loader").addClass("is-active");
 
+    var db = firebase.firestore();
+    var rut = localStorage.getItem("rut_pat");
 
-/////////////////////////////// GRAFICO ////////////////////////////////////////////////////
+    var docPro = db.collection("patient").doc(rut).collection("historial").doc(id);
 
+    docPro.get().then(function (doc) {
+        if (doc.exists) {
+            console.log(`${doc.data().titulo}`);
 
-// Set new default font family and font color to mimic Bootstrap's default styling
-//Chart.defaults.global.defaultFontFamily = 'Nunito', '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
-//Chart.defaults.global.defaultFontColor = '#858796';
+            $("#datos_history").empty();
+            var fil = "";
+            fil += "<tr><td style='width: 30%;'><strong>Titulo:</strong></td><td style='width: 70%;'>" + `${doc.data().titulo.toUpperCase()}` + "</td></tr>";
+            fil += "<tr><td style='width: 30%;'><strong>Fecha:</strong></td><td style='width: 70%;'>" + `${doc.data().fecha.toUpperCase()}` + "</td></tr>";
+            fil += "<tr><td style='width: 30%;'><strong>Hora:</strong></td><td style='width: 70%;'>" + `${doc.data().hora.toUpperCase()}` + "</td></tr>";
+            fil += "<tr><td style='width: 30%;'><strong>Responsable:</strong></td><td style='width: 70%;'>" + `${doc.data().responsable.toUpperCase()}` + "</td></tr>";
+            fil += "<tr><td style='width: 30%;'><strong>Evolución:</strong></td><td style='width: 70%;'>" + `${doc.data().text_Evolucion.toUpperCase()}` + "</td></tr>";
+            fil += "<tr><td style='width: 30%;'><strong>Diagnostico:</strong></td><td style='width: 70%;'>" + `${doc.data().diagnostico.toUpperCase()}` + "</td></tr>";
+            fil += "<tr><td style='width: 30%;'><strong>Tratamiento:</strong></td><td style='width: 70%;'>" + `${doc.data().tratamiento.toUpperCase()}` + "</td></tr>";
+            $("#datos_history").append(fil);
+            $("#loader").removeClass("is-active");
 
-function number_format(number, decimals, dec_point, thousands_sep) {
-    // *     example: number_format(1234.56, 2, ',', ' ');
-    // *     return: '1 234,56'
-    number = (number + '').replace(',', '').replace(' ', '');
-    var n = !isFinite(+number) ? 0 : +number,
-        prec = !isFinite(+decimals) ? 0 : Math.abs(decimals),
-        sep = (typeof thousands_sep === 'undefined') ? ',' : thousands_sep,
-        dec = (typeof dec_point === 'undefined') ? '.' : dec_point,
-        s = '',
-        toFixedFix = function (n, prec) {
-            var k = Math.pow(10, prec);
-            return '' + Math.round(n * k) / k;
-        };
-    // Fix for IE parseFloat(0.55).toFixed(0) = 0;
-    s = (prec ? toFixedFix(n, prec) : '' + Math.round(n)).split('.');
-    if (s[0].length > 3) {
-        s[0] = s[0].replace(/\B(?=(?:\d{3})+(?!\d))/g, sep);
-    }
-    if ((s[1] || '').length < prec) {
-        s[1] = s[1] || '';
-        s[1] += new Array(prec - s[1].length + 1).join('0');
-    }
-    return s.join(dec);
+        } else {
+            toastr["warning"]("Algo sucedio, contactese con soporte", "Atención");
+        }
+    }).catch(function (error) {
+        console.log("Error getting document:", error);
+    });
 }
 
-// Area Chart Example
-var datos = [];
-var label = [];
-jQuery.getJSON('https://projectmedisync.firebaseapp.com/api/v1/patient_range_of_motion', function (result) {
-    Object.keys(result.patient).forEach(function (key) {
-        var object = (key, result.patient[key]);
-        if (object.rut == localStorage.getItem("patient_history")) {
-            Object.keys(object.subCollection).forEach(function (key) {
-                var subobject = (key, object.subCollection[key]);
-                datos.push(subobject.datox);
-                label.push(subobject.fecha);
-            });
-            var ctx = document.getElementById("arearChart_pro");
-            var myLineChart = new Chart(ctx, {
-                type: 'line',
-                data: {
-                    labels: label,
-                    datasets: [{
-                        label: "Movimiento",
-                        lineTension: 0.3,
-                        backgroundColor: "rgba(78, 115, 223, 0.05)",
-                        borderColor: "rgba(78, 115, 223, 1)",
-                        pointRadius: 3,
-                        pointBackgroundColor: "rgba(78, 115, 223, 1)",
-                        pointBorderColor: "rgba(78, 115, 223, 1)",
-                        pointHoverRadius: 3,
-                        pointHoverBackgroundColor: "rgba(78, 115, 223, 1)",
-                        pointHoverBorderColor: "rgba(78, 115, 223, 1)",
-                        pointHitRadius: 10,
-                        pointBorderWidth: 2,
-                        data: datos,
-                    }],
-                },
-                options: {
-                    maintainAspectRatio: false,
-                    layout: {
-                        padding: {
-                            left: 10,
-                            right: 25,
-                            top: 25,
-                            bottom: 0
-                        }
-                    },
-                    scales: {
-                        xAxes: [{
-                            time: {
-                                unit: 'date'
-                            },
-                            gridLines: {
-                                display: false,
-                                drawBorder: false
-                            },
-                            ticks: {
-                                maxTicksLimit: 7
-                            }
-                        }],
-                        yAxes: [{
-                            ticks: {
-                                maxTicksLimit: 5,
-                                padding: 10,
-                                // Agrega el simbolo de grados
-                                callback: function (value, index, values) {
-                                    return number_format(value) + '°';
-                                }
-                            },
-                            gridLines: {
-                                color: "rgb(234, 236, 244)",
-                                zeroLineColor: "rgb(234, 236, 244)",
-                                drawBorder: false,
-                                borderDash: [2],
-                                zeroLineBorderDash: [2]
-                            }
-                        }],
-                    },
-                    legend: {
-                        display: false
-                    },
-                    tooltips: {
-                        backgroundColor: "rgb(255,255,255)",
-                        bodyFontColor: "#858796",
-                        titleMarginBottom: 10,
-                        titleFontColor: '#6e707e',
-                        titleFontSize: 14,
-                        borderColor: '#dddfeb',
-                        borderWidth: 1,
-                        xPadding: 15,
-                        yPadding: 15,
-                        displayColors: false,
-                        intersect: false,
-                        mode: 'index',
-                        caretPadding: 10,
-                        callbacks: {
-                            label: function (tooltipItem, chart) {
-                                var datasetLabel = chart.datasets[tooltipItem.datasetIndex].label || '';
-                                return datasetLabel + ': ' + number_format(tooltipItem.yLabel) + '°';
-                            }
-                        }
-                    }
-                }
-            });
+function table_edit_history(id) {
+    $("#loader").addClass("is-active");
+
+    var db = firebase.firestore();
+    var rut = localStorage.getItem("rut_pat");
+
+    var docPro = db.collection("patient").doc(rut).collection("historial").doc(id);
+
+    docPro.get().then(function (doc) {
+        if (doc.exists) {
+            localStorage.setItem("id_hist", `${doc.id}`);
+            $("#title_hist_edit").val(`${doc.data().titulo}`);
+            $("#date_hist_edit").val(`${doc.data().fecha}`);
+            $("#time_hist_edit").val(`${doc.data().hora}`);
+            $("#resp_hist_edit").val(`${doc.data().responsable}`);
+            $("#evol_hist_edit").val(`${doc.data().text_Evolucion}`);
+            $("#diag_hist_edit").val(`${doc.data().diagnostico}`);
+            $("#trat_hist_edit").val(`${doc.data().tratamiento}`);
+            $("#loader").removeClass("is-active");
+        } else {
+            toastr["warning"]("Algo sucedio, contactese con soporte", "Atención");
         }
+    }).catch(function (error) {
+        console.log("Error getting document:", error);
     });
-});
-*/
+}
+
+function table_edit_eval(id) {
+    $("#loader").addClass("is-active");
+
+    var db = firebase.firestore();
+    var rut = localStorage.getItem("rut_pat");
+
+    var docPro = db.collection("patient").doc(rut).collection("range_of_motion").doc(id);
+
+    docPro.get().then(function (doc) {
+        if (doc.exists) {
+            localStorage.setItem("id_eval", `${doc.id}`);
+            $("#date_eval_edit").val(`${doc.data().fecha}`);
+            $("#time_eval_edit").val(`${doc.data().hora}`);
+            $("#dato_x_edit").val(`${doc.data().datox}`);
+            $("#dato_y_edit").val(`${doc.data().datoy}`);
+            $("#loader").removeClass("is-active");
+        } else {
+            toastr["warning"]("Algo sucedio, contactese con soporte", "Atención");
+        }
+    }).catch(function (error) {
+        console.log("Error getting document:", error);
+    });
+}
+
+
+
