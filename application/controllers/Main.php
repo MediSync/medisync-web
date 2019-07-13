@@ -20,9 +20,9 @@ class Main extends CI_Controller
             $this->load->view('profesional/main');
             $this->load->view('profesional/footer');
         } else if ($this->session->userdata("organization")) {
-            $this->load->view('organization/principal/header');
-            $this->load->view('organization/principal/main');
-            $this->load->view('organization/principal/footer');
+            $this->load->view('organization/header');
+            $this->load->view('organization/main');
+            $this->load->view('organization/footer');
         } else {
             $this->load->view('main/login');
         }
@@ -40,9 +40,9 @@ class Main extends CI_Controller
             $this->load->view('profesional/main');
             $this->load->view('profesional/footer');
         } else if ($this->session->userdata("organization")) {
-            $this->load->view('organization/principal/header');
-            $this->load->view('organization/principal/main');
-            $this->load->view('organization/principal/footer');
+            $this->load->view('organization/header');
+            $this->load->view('organization/main');
+            $this->load->view('organization/footer');
         } else {
             $this->load->view('main/login');
         }
@@ -185,13 +185,9 @@ class Main extends CI_Controller
         } else if ($this->session->userdata("profesional")) {
             redirect('principal');
         } else if ($this->session->userdata("organization")) {
-            $this->load->view('organization/principal/header');
             $this->load->view('organization/modules/gestion_prof');
-            $this->load->view('organization/principal/footer');
         } else {
-            $this->load->view('main/header');
-            $this->load->view('main/login');
-            $this->load->view('main/footer');
+            redirect('principal');
         }
     }
 
@@ -203,13 +199,9 @@ class Main extends CI_Controller
         } else if ($this->session->userdata("profesional")) {
             redirect('principal');
         } else if ($this->session->userdata("organization")) {
-            $this->load->view('organization/principal/header');
             $this->load->view('organization/modules/gestion_paci');
-            $this->load->view('organization/principal/footer');
         } else {
-            $this->load->view('main/header');
-            $this->load->view('main/login');
-            $this->load->view('main/footer');
+            redirect('principal');
         }
     }
 }

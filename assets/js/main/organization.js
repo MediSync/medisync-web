@@ -4,19 +4,58 @@ $(document).ready(function () {
         "positionClass": "toast-top-right"
     }
     var user = localStorage.getItem("organization");
+    console.log(user);
 
-    jQuery.getJSON('https://projectmedisync.firebaseapp.com/api/v1/organization/' + user, function (result) {
-        $("#lbl_nav").text("BIEVENIDO " + result.name.toUpperCase());
+    var db = firebase.firestore();
+
+    var docPro = db.collection("organization").doc(user);
+
+    docPro.get().then(function (doc2) {
+        if (doc2.exists) {
+            $("#nav_brand").text("Bienvenido " + doc2.data().names);
+            localStorage.setItem("admin", doc2.data().admin);
+            $("#loader").removeClass("is-active");
+        } else {
+            console.log("No such document!");
+        }
+    }).catch(function (error) {
+        console.log("Error getting document:", error);
     });
 
+    /*
+    $("#new_modal").on('hidden.bs.modal', function () {
+        document.getElementById("register_pac").reset();
+    });
 
-    $('#birth_date_prof').datepicker({ language: "es", autoclose: true });
-    $('#birth_date_prof_edit').datepicker({ language: "es", autoclose: true });
+    $('#rut_pac').rut({
+        validateOn: 'change keyup',
+        useThousandsSeparator: false
+    });
 
-    table_body();
-    table_body2();
+    $('#birth_date_pac').datepicker({ language: "es", autoclose: true });
+    $('#birth_date_pac_edit').datepicker({ language: "es", autoclose: true });
+
+    $("#sync_table").on("click", function (e) {
+        e.preventDefault();
+        table_body();
+    });
+    */
 });
 
+$("#gestion_pacientes").on("click", function (e) {
+    e.preventDefault();
+    $("#loader").addClass("is-active");
+    $("main").load("gestion_paci");
+});
+
+$("#gestion_profesional").on("click", function (e) {
+    e.preventDefault();
+    $("#loader").addClass("is-active");
+    $("main").load("gestion_prof");
+});
+
+
+/*
 function table_body() {
     jQuery.getJSON('https://projectmedisync.firebaseapp.com/api/v1/patient/', function (result) {
         $("#table_body").empty();
@@ -400,4 +439,4 @@ $("#btn_edit_prof").on("click", function (e) {
 });
 
 
-
+*/
