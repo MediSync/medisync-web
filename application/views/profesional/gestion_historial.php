@@ -48,11 +48,11 @@
 								<td id="email_hist" style="width: 50%;"></td>
 							</tr>
 							<tr>
-								<td style="width: 10%;"><strong>Telefono</strong></td>
+								<td style="width: 10%;"><strong>Teléfono</strong></td>
 								<td id="phone_hist" style="width: 50%;"></td>
 							</tr>
 							<tr>
-								<td style="width: 20%;"><strong>Direccion</strong></td>
+								<td style="width: 20%;"><strong>Dirección</strong></td>
 								<td id="address_hist" style="width: 50%;"></td>
 							</tr>
 						</tbody>
@@ -63,7 +63,7 @@
 	</div>
 	<div class="card shadow mb-4">
 		<div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-			<h6 class="m-0 font-weight-bold text-primary">Evolucion</h6>
+			<h6 class="m-0 font-weight-bold text-primary">Evolución</h6>
 		</div>
 		<div class="card-body">
 			<div class="chart-area">
@@ -107,7 +107,7 @@
 								<th class="" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1">Fecha</th>
 								<th class="" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1">Hora</th>
 								<th class="" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1">Dato X</th>
-								<th class="" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1">DATO Y</th>
+								<th class="" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1">Dato Y</th>
 								<th class="" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1"></th>
 							</tr>
 						</thead>
@@ -639,7 +639,7 @@
 				fil2 += "<td >" + doc2.data().fecha.toUpperCase() + "</td>";
 				fil2 += "<td >" + doc2.data().titulo.toUpperCase() + "</td>";
 				fil2 += "<td >" + doc2.data().responsable.toUpperCase() + "</td>";
-				fil2 += "<td ><a href='#' id='load_view_history' class='btn btn-sm btn-info float-right' data-toggle='modal' data-target='#view_history_modal' data-toggle='tooltip' data-placement='top' title='Ver mas detalles'><i class='fas fa-eye'></i></a></td>";
+				fil2 += "<td ><a href='#' id='load_view_history' class='btn btn-sm btn-info float-right' data-toggle='modal' data-target='#view_history_modal' data-toggle='tooltip' data-placement='top' title='Ver más detalles'><i class='fas fa-eye'></i></a></td>";
 				fil2 += "<td ><a href='#' id='load_edit_history' class='btn btn-sm btn-warning float-right' data-toggle='modal' data-target='#edit_history_modal' data-toggle='tooltip' data-placement='top' title='Actualice el registro'><i class='fas fa-edit'></i></a></td>";
 				fil2 += "</tr>";
 				$("#table_history").append(fil2);
@@ -713,7 +713,7 @@
 						fil2 += "<td >" + doc2.data().fecha.toUpperCase() + "</td>";
 						fil2 += "<td >" + doc2.data().titulo.toUpperCase() + "</td>";
 						fil2 += "<td >" + doc2.data().responsable.toUpperCase() + "</td>";
-						fil2 += "<td ><a href='#' id='load_view_history' class='btn btn-sm btn-info float-right' data-toggle='modal' data-target='#view_history_modal' data-toggle='tooltip' data-placement='top' title='Ver mas detalles'><i class='fas fa-eye'></i></a></td>";
+						fil2 += "<td ><a href='#' id='load_view_history' class='btn btn-sm btn-info float-right' data-toggle='modal' data-target='#view_history_modal' data-toggle='tooltip' data-placement='top' title='Ver más detalles'><i class='fas fa-eye'></i></a></td>";
 						fil2 += "<td ><a href='#' id='load_edit_history' class='btn btn-sm btn-warning float-right' data-toggle='modal' data-target='#edit_history_modal'  data-toggle='tooltip' data-placement='top' title='Actualice el registro'><i class='fas fa-edit'></i></a></td>";
 						fil2 += "</tr>";
 						$("#table_history").append(fil2);
@@ -724,7 +724,7 @@
 				document.getElementById("form_new_history").reset();
 				$("#loader").removeClass("is-active");
 			}).catch(function () {
-				toastr["warning"]("Contactese con soporte", "No se ha podido registrar");
+				toastr["warning"]("Contáctese con soporte", "No se ha podido registrar");
 			});
 		}
 		$("#loader").removeClass("is-active");
@@ -775,7 +775,7 @@
 						fil2 += "<td >" + doc2.data().fecha.toUpperCase() + "</td>";
 						fil2 += "<td >" + doc2.data().titulo.toUpperCase() + "</td>";
 						fil2 += "<td >" + doc2.data().responsable.toUpperCase() + "</td>";
-						fil2 += "<td ><a href='#' id='load_view_history' class='btn btn-sm btn-info float-right' data-toggle='modal' data-target='#view_history_modal' data-toggle='tooltip' data-placement='top' title='Ver mas detalles'><i class='fas fa-eye'></i></a></td>";
+						fil2 += "<td ><a href='#' id='load_view_history' class='btn btn-sm btn-info float-right' data-toggle='modal' data-target='#view_history_modal' data-toggle='tooltip' data-placement='top' title='Ver más detalles'><i class='fas fa-eye'></i></a></td>";
 						fil2 += "<td ><a href='#' id='load_edit_history' class='btn btn-sm btn-warning float-right' data-toggle='modal' data-target='#edit_history_modal'  data-toggle='tooltip' data-placement='top' title='Actualice el registro'><i class='fas fa-edit'></i></a></td>";
 						fil2 += "</tr>";
 						$("#table_history").append(fil2);
@@ -786,7 +786,7 @@
 				document.getElementById("form_edit_history").reset();
 				$("#loader").removeClass("is-active");
 			}).catch(function () {
-				toastr["warning"]("Contactese con soporte", "No se ha podido registrar");
+				toastr["warning"]("Contáctese con soporte", "No se ha podido registrar");
 			});
 		}
 		$("#loader").removeClass("is-active");
@@ -826,7 +826,7 @@
 				document.getElementById("form_new_eval").reset();
 				$("#loader").removeClass("is-active");
 			}).catch(function () {
-				toastr["warning"]("Contactese con soporte", "No se ha podido registrar");
+				toastr["warning"]("Contáctese con soporte", "No se ha podido registrar");
 			});
 		}
 		$("#loader").removeClass("is-active");
@@ -866,7 +866,7 @@
 				document.getElementById("form_edit_eval").reset();
 				$("#loader").removeClass("is-active");
 			}).catch(function () {
-				toastr["warning"]("Contactese con soporte", "No se ha podido registrar");
+				toastr["warning"]("Contáctese con soporte", "No se ha podido registrar");
 			});
 		}
 		$("#loader").removeClass("is-active");

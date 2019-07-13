@@ -110,12 +110,12 @@
 						</div>
 						<div class="form-group row">
 							<div class="col-md-6 ">
-								<input type="email" class="form-control" id="email_pac" placeholder="Correo Electronico"
+								<input type="email" class="form-control" id="email_pac" placeholder="Correo Electrónico"
 									maxlength="50">
 							</div>
 							<div class="col-md-6">
 								<input type="number" class="form-control" id="phone_pac"
-									placeholder="Telefono de Contacto" maxlength="2">
+									placeholder="Teléfono de Contacto" maxlength="2">
 							</div>
 						</div>
 						<div class="form-group row">
@@ -186,11 +186,11 @@
 						<div class="form-group row">
 							<div class="col-md-6 ">
 								<input type="email" class="form-control" id="email_pac_edit"
-									placeholder="Correo Electronico" maxlength="50">
+									placeholder="Correo Electrónico" maxlength="50">
 							</div>
 							<div class="col-md-6">
 								<input type="number" class="form-control" id="phone_pac_edit"
-									placeholder="Telefono de Contacto" maxlength="2">
+									placeholder="Teléfono de Contacto" maxlength="2">
 							</div>
 						</div>
 						<div class="form-group row">

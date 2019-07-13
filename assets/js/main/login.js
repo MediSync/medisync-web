@@ -132,7 +132,7 @@ $("#btn_registrer").on("click", function (e) {
     } else if (!ValidateEmail(email)) {
         toastr["warning"]("El correo no es valido", "Atención");
     } else if (!phonenumber(phone)) {
-        toastr["warning"]("El telefono no es valido", "Atención");
+        toastr["warning"]("El teléfono no es valido", "Atención");
     } else if (!dateValidate(birth_date)) {
         toastr["warning"]("Debe ser mayor de edad", "Atención");
     } else if (sexo == null) {
@@ -142,7 +142,7 @@ $("#btn_registrer").on("click", function (e) {
 
         docPro.get().then(function (doc2) {
             if (doc2.exists) {
-                toastr["warning"]("El profesional ya esta registrado", "Atención");
+                toastr["warning"]("El profesional ya está registrado", "Atención");
             } else {
                 var docOrg = db.collection("organization").doc(run);
 
@@ -168,7 +168,7 @@ $("#btn_registrer").on("click", function (e) {
                             $('#myModal').modal('hide');
                             $("#loader").removeClass("is-active");
                         }).catch(function () {
-                            toastr["warning"]("Contactese con soporte", "No se ha podido registrar");
+                            toastr["warning"]("Contáctese con soporte", "No se ha podido registrar");
                         });
                     }
                 }).catch(function (error) {
@@ -212,14 +212,14 @@ $("#btn_org").on("click", function (e) {
         toastr["warning"]("El correo no es valido", "Atención");
         $("#loader").removeClass("is-active");
     } else if (!phonenumber(phone)) {
-        toastr["warning"]("El telefono no es valido", "Atención");
+        toastr["warning"]("El teléfono no es valido", "Atención");
         $("#loader").removeClass("is-active");
     } else {
         var docOrg = db.collection("organization").doc(rut);
 
         docOrg.get().then(function (doc) {
             if (doc.exists) {
-                toastr["warning"]("La organización ya esta registrada", "Atención");
+                toastr["warning"]("La organización ya está registrada", "Atención");
                 $("#loader").removeClass("is-active");
             } else {
                 var docPro = db.collection("profesional").doc(rut);
@@ -243,7 +243,7 @@ $("#btn_org").on("click", function (e) {
                             $('#myModal').modal('hide');
                             $("#loader").removeClass("is-active");
                         }).catch(function () {
-                            toastr["warning"]("Contactese con soporte", "No se ha podido registrar");
+                            toastr["warning"]("Contáctese con soporte", "No se ha podido registrar");
                             $("#loader").removeClass("is-active");
 
                         });

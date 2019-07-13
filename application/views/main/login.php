@@ -34,14 +34,14 @@
                             <input type="password" name="pass" id="pass" class="form-control" placeholder="Contraseña">
                             <div style="text-align: left; margin: 10px" class="checkbox">
                                 <label style="color: #666;">
-                                    <input type="checkbox"> Recordodar Credenciales
+                                    <input type="checkbox"> Recordar Credenciales
                                 </label>
                             </div>
                             <button class="btn btn-block btn-primary btn-lg mt-5 mb-5" id="btn_login">Ingresar</button>
                             <br>
                             <p>
                                 <a class="small" href="#" data-toggle="modal" data-target="#myModal">¿No
-                                    tienes una cuenta? ¡Registrate!</a>
+                                    tienes una cuenta? ¡Regístrate!</a>
                             </p>
                             <div id="snackbar"></div>
                         </form>
@@ -116,11 +116,11 @@
                                 <div class="form-group">
                                     <div class="col-md-6 ">
                                         <input type="email" class="form-control" id="email"
-                                            placeholder="Correo Electronico" maxlength="50">
+                                            placeholder="Correo Electrónico" maxlength="50">
                                     </div>
                                     <div class="col-md-6">
                                         <input type="number" class="form-control" id="phone"
-                                            placeholder="Telefono de Contacto" maxlength="2">
+                                            placeholder="Teléfono de Contacto" maxlength="2">
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -131,7 +131,7 @@
                                             <span class="input-group-btn">
                                                 <button class="btn" type="button" data-toggle="popover"
                                                     title="Requisitos"
-                                                    data-content="La contraseña debe tener de 8 a 15 caracteres con una letra mayuscula, una letra minuscula, un numero y un caracter especial."><span
+                                                    data-content="La contraseña debe tener de 8 a 15 caracteres con una letra mayúscula, una letra minúscula, un número y un carácter especial."><span
                                                         class="far fa-question-circle" aria-hidden="true">
                                                     </span></button>
                                             </span>
@@ -176,11 +176,11 @@
                                 <div class="form-group">
                                     <div class="col-md-6 ">
                                         <input type="email" class="form-control" id="email_org"
-                                            placeholder="Correo Electronico" maxlength="50">
+                                            placeholder="Correo Electrónico" maxlength="50">
                                     </div>
                                     <div class="col-md-6">
                                         <input type="number" class="form-control" id="phone_org"
-                                            placeholder="Telefono de Contacto" maxlength="2">
+                                            placeholder="Teléfono de Contacto" maxlength="2">
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -191,7 +191,7 @@
                                             <span class="input-group-btn">
                                                 <button class="btn" type="button" data-toggle="popover"
                                                     title="Requisitos"
-                                                    data-content="La contraseña debe tener de 8 a 15 caracteres con una letra mayuscula, una letra minuscula, un numero y un caracter especial."><span
+                                                    data-content="La contraseña debe tener de 8 a 15 caracteres con una letra mayúscula, una letra minúscula, un número y un carácter especial."><span
                                                         class="far fa-question-circle" aria-hidden="true">
                                                     </span></button>
                                             </span>

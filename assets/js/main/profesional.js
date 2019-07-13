@@ -66,7 +66,7 @@ function table_body() {
             fil += "<td >" + `${doc.data().sexo}` + "</td>";
             fil += "<td >" + calculateAge(`${doc.data().birth_date}`) + "</td>";
             fil += "<td >" + `${doc.data().birth_date}` + "</td>";
-            fil += "<td ><a href='#' id='load_history_paciente' class='btn btn-sm btn-success float-right' data-toggle='tooltip' data-placement='top' title='Ver ficha clinica'><i class='fas fa-notes-medical'></i></a></td>";
+            fil += "<td ><a href='#' id='load_history_paciente' class='btn btn-sm btn-success float-right' data-toggle='tooltip' data-placement='top' title='Ver ficha clínica'><i class='fas fa-notes-medical'></i></a></td>";
             fil += "<td ><a href='#' id='load_view_paciente' class='btn btn-sm btn-info float-right' data-toggle='modal' data-target='#view_modal' data-toggle='tooltip' data-placement='top' title='Ver detalles del paciente'><i class='fas fa-eye'></i></a></td>";
             if (localStorage.getItem("admin") === "si") {
                 fil += "<td ><a href='#' id='load_edit_paciente' class='btn btn-sm btn-warning float-right' data-toggle='modal' data-target='#edit_modal' data-toggle='tooltip' data-placement='top' title='Editar datos del paciente'><i class='fas fa-edit'></i></a></td>";
@@ -104,7 +104,7 @@ $("#btn_add_pac").on("click", function (e) {
     } else if (!ValidateEmail(email)) {
         toastr["warning"]("El correo no es valido", "Atención");
     } else if (!phonenumber(phone)) {
-        toastr["warning"]("El telefono no es valido", "Atención");
+        toastr["warning"]("El teléfono no es valido", "Atención");
     } else if (sexo == null) {
         toastr["warning"]("Debe seleccionar un sexo", "Atención");
     } else {
@@ -115,7 +115,7 @@ $("#btn_add_pac").on("click", function (e) {
 
             docPro.get().then(function (doc2) {
                 if (doc2.exists) {
-                    toastr["warning"]("El paciente ya esta registrado", "Atención");
+                    toastr["warning"]("El paciente ya está registrado", "Atención");
                 } else {
                     db.collection("patient").doc(run).set({
                         rut: run,
@@ -135,7 +135,7 @@ $("#btn_add_pac").on("click", function (e) {
                         document.getElementById("register_pac").reset();
                         $("#loader").removeClass("is-active");
                     }).catch(function () {
-                        toastr["warning"]("Contactese con soporte", "No se ha podido registrar");
+                        toastr["warning"]("Contáctese con soporte", "No se ha podido registrar");
                     });
                 }
             }).catch(function (error) {
@@ -166,7 +166,7 @@ $("body").on("click", "#load_edit_paciente", function (e) {
             $('#email_pac_edit').val(`${doc.data().email}`);
             $('#phone_pac_edit').val(`${doc.data().phone}`);
         } else {
-            toastr["warning"]("Algo sucedio, contactese con soporte", "Atención");
+            toastr["warning"]("Algo sucedió, contáctese con soporte", "Atención");
         }
     }).catch(function (error) {
         console.log("Error getting document:", error);
@@ -197,7 +197,7 @@ $("#btn_edit_pac").on("click", function (e) {
     } else if (!ValidateEmail(email)) {
         toastr["warning"]("El correo no es valido", "Atención");
     } else if (!phonenumber(phone)) {
-        toastr["warning"]("El telefono no es valido", "Atención");
+        toastr["warning"]("El teléfono no es valido", "Atención");
     } else if (sexo == null) {
         toastr["warning"]("Debe seleccionar un sexo", "Atención");
     } else {
@@ -273,10 +273,10 @@ function table_body_paciente(rut) {
             fil += "<tr><td style='width: 30%;'><strong>Genero:</strong></td><td style='width: 70%;'>" + ((`${doc.data().sexo.toUpperCase()}` === "M") ? "MASCULINO" : "FEMENINO") + "</td></tr>";
             fil += "<tr><td style='width: 30%;'><strong>Dirección:</strong></td><td style='width: 70%;'>" + `${doc.data().address.toUpperCase()}` + "</td></tr>";
             fil += "<tr><td style='width: 30%;'><strong>Correo:</strong></td><td style='width: 70%;'>" + `${doc.data().email.toUpperCase()}` + "</td></tr>";
-            fil += "<tr><td style='width: 30%;'><strong>Numero de Telefono:</strong></td><td style='width: 70%;'>" + `${doc.data().phone}` + "</td></tr>";
+            fil += "<tr><td style='width: 30%;'><strong>Numero de Teléfono:</strong></td><td style='width: 70%;'>" + `${doc.data().phone}` + "</td></tr>";
             $("#datos_paciente").append(fil);
         } else {
-            toastr["warning"]("Algo sucedio, contactese con soporte", "Atención");
+            toastr["warning"]("Algo sucedió, contáctese con soporte", "Atención");
         }
     }).catch(function (error) {
         console.log("Error getting document:", error);
@@ -307,7 +307,7 @@ $("body").on("click", "#load_history_paciente", function (e) {
             $("#address_hist").text(`${doc.data().address.toUpperCase()}`);
             $("#loader").removeClass("is-active");
         } else {
-            toastr["warning"]("Algo sucedio, contactese con soporte", "Atención");
+            toastr["warning"]("Algo sucedió, contáctese con soporte", "Atención");
         }
     }).catch(function (error) {
         console.log("Error getting document:", error);
@@ -366,7 +366,7 @@ function table_view_history(id) {
             $("#loader").removeClass("is-active");
 
         } else {
-            toastr["warning"]("Algo sucedio, contactese con soporte", "Atención");
+            toastr["warning"]("Algo sucedió, contáctese con soporte", "Atención");
         }
     }).catch(function (error) {
         console.log("Error getting document:", error);
@@ -393,7 +393,7 @@ function table_edit_history(id) {
             $("#trat_hist_edit").val(`${doc.data().tratamiento}`);
             $("#loader").removeClass("is-active");
         } else {
-            toastr["warning"]("Algo sucedio, contactese con soporte", "Atención");
+            toastr["warning"]("Algo sucedió, contáctese con soporte", "Atención");
         }
     }).catch(function (error) {
         console.log("Error getting document:", error);
@@ -417,7 +417,7 @@ function table_edit_eval(id) {
             $("#dato_y_edit").val(`${doc.data().datoy}`);
             $("#loader").removeClass("is-active");
         } else {
-            toastr["warning"]("Algo sucedio, contactese con soporte", "Atención");
+            toastr["warning"]("Algo sucedió, contáctese con soporte", "Atención");
         }
     }).catch(function (error) {
         console.log("Error getting document:", error);
