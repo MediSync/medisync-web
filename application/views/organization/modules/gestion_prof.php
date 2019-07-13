@@ -38,7 +38,7 @@
 										<th class="" tabindex="2" aria-controls="dataTable" rowspan="1" colspan="1"
 											aria-sort="ascending" aria-label="" style="width: 5%;">Correo</th>
 										<th class="" tabindex="2" aria-controls="dataTable" rowspan="1" colspan="1"
-											aria-sort="ascending" aria-label="" style="width: 5%;">Telefono</th>
+											aria-sort="ascending" aria-label="" style="width: 5%;">Teléfono</th>
 										<th class="" style="width: 1%;"></th>
 										<th class="" style="width: 1%;"></th>
 									</tr>
@@ -480,7 +480,7 @@
 				fil += "<tr><td style='width: 30%;'><strong>Genero:</strong></td><td style='width: 70%;'>" + ((`${doc.data().sexo.toUpperCase()}` === "M") ? "MASCULINO" : "FEMENINO") + "</td></tr>";
 				fil += "<tr><td style='width: 30%;'><strong>Dirección:</strong></td><td style='width: 70%;'>" + `${doc.data().address.toUpperCase()}` + "</td></tr>";
 				fil += "<tr><td style='width: 30%;'><strong>Correo:</strong></td><td style='width: 70%;'>" + `${doc.data().email.toUpperCase()}` + "</td></tr>";
-				fil += "<tr><td style='width: 30%;'><strong>Numero de Telefono:</strong></td><td style='width: 70%;'>" + `${doc.data().phone.toUpperCase()}` + "</td></tr>";
+				fil += "<tr><td style='width: 30%;'><strong>Numero de Teléfono:</strong></td><td style='width: 70%;'>" + `${doc.data().phone.toUpperCase()}` + "</td></tr>";
 				$("#datos_view_prof").append(fil);
 			} else {
 				toastr["warning"]("Algo sucedió, contáctese con soporte", "Atención");
@@ -502,7 +502,7 @@
 			fil += "<tr><td style='width: 30%;'><strong>Genero:</strong></td><td style='width: 70%;'>" + ((object.sexo.toUpperCase() === "M") ? "MASCULINO" : "FEMENINO") + "</td></tr>";
 			fil += "<tr><td style='width: 30%;'><strong>Dirección:</strong></td><td style='width: 70%;'>" + object.address.toUpperCase() + "</td></tr>";
 			fil += "<tr><td style='width: 30%;'><strong>Correo:</strong></td><td style='width: 70%;'>" + object.email.toUpperCase() + "</td></tr>";
-			fil += "<tr><td style='width: 30%;'><strong>Numero de Telefono:</strong></td><td style='width: 70%;'>" + object.phone.toUpperCase() + "</td></tr>";
+			fil += "<tr><td style='width: 30%;'><strong>Numero de Teléfono:</strong></td><td style='width: 70%;'>" + object.phone.toUpperCase() + "</td></tr>";
 			$("#datos_view_prof").append(fil);
 		});
 	}
