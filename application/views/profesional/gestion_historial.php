@@ -693,7 +693,7 @@
 		console.log(trat_hist);
 		console.log(id_hist);
 
-		if (title_hist == "" || date_hist == "" || time_hist == "" || resp_hist == "" || evol_hist == "" || diag_hist == "" || trat_hist == "") {
+		if (title_hist == "" || date_hist == "" || time_hist == "" || resp_hist == "") {
 			toastr["warning"]("Debe completar todos los campos", "Atención");
 		} else {
 			db.collection("patient").doc(rut).collection("historial").doc(id_hist).set({
@@ -755,7 +755,7 @@
 		console.log(trat_hist);
 		console.log(id_hist);
 
-		if (title_hist == "" || date_hist == "" || time_hist == "" || resp_hist == "" || evol_hist == "" || diag_hist == "" || trat_hist == "") {
+		if (title_hist == "" || date_hist == "" || time_hist == "" || resp_hist == "") {
 			toastr["warning"]("Debe completar todos los campos", "Atención");
 		} else {
 			db.collection("patient").doc(rut).collection("historial").doc(id_hist).set({
