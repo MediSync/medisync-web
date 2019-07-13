@@ -576,7 +576,8 @@
 <script>
 	$(document).ready(function () {
 		$('#date_hist').datepicker({ language: "es", autoclose: true });
-		$('#date_eval').datepicker({ language: "es", autoclose: true });
+		$('#date_hist_edit').datepicker({ language: "es", autoclose: true });
+
 
 
 		var db = firebase.firestore();
